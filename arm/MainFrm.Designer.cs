@@ -195,10 +195,12 @@
                         Form1 frm = new Form1(((RecordWeight)(listViewOperation.Items[i].Tag)));
                         if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-                            for (int j = 0; j < listWeight.Count; j++)
-                                if (listWeight[j].Number == frm.rec.Number)
-                                    listWeight[j] = frm.rec;
-             
+                            lock (listWeight)
+                            {
+                                for (int j = 0; j < listWeight.Count; j++)
+                                    if (listWeight[j].Number == frm.rec.Number)
+                                        listWeight[j] = frm.rec;
+                            }
 
                             listViewOperation.Items[i].Tag = frm.rec;
 

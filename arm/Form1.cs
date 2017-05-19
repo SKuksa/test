@@ -45,6 +45,7 @@ namespace arm
             else
                 if(rec.dataTara== DateTime.MinValue && rec.dataBrutto==DateTime.MinValue)
                     comboBox1.SelectedIndex = 0;
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

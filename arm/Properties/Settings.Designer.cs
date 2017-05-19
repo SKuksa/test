@@ -25,13 +25,13 @@ namespace arm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
-        public int Port {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/")]
+        public string Host {
             get {
-                return ((int)(this["Port"]));
+                return ((string)(this["Host"]));
             }
             set {
-                this["Port"] = value;
+                this["Host"] = value;
             }
         }
         
