@@ -289,5 +289,225 @@ namespace arm
             textBoxNetto.Text = rec.WeightNetto.ToString();// = int.Parse(textBoxNetto.Text);
             textBoxTara.Text=rec.WeightTara.ToString();// = int.Parse(textBoxTara.Text);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTara_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNetto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBrutto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textWeight_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTara_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBrutto_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBoxNumberVs_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBoxDataTara_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void maskedTextBoxDataBrutto_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAutor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAutorTara_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAutorBrutto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSclad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxVodila_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxGrusoPoluch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxGrusoOtpr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPricep_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAuto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

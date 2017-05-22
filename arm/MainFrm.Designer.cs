@@ -48,42 +48,60 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(116, 67);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(18, 53);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(144, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(66, 39);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 25);
+            this.label1.Size = new System.Drawing.Size(164, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Взвешивания";
             // 
             // buttonNesav
             // 
-            this.buttonNesav.Location = new System.Drawing.Point(337, 66);
+            this.buttonNesav.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonNesav.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
+            this.buttonNesav.FlatAppearance.BorderSize = 2;
+            this.buttonNesav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNesav.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.buttonNesav.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
+            this.buttonNesav.Location = new System.Drawing.Point(1312, 53);
             this.buttonNesav.Name = "buttonNesav";
-            this.buttonNesav.Size = new System.Drawing.Size(233, 23);
+            this.buttonNesav.Size = new System.Drawing.Size(248, 49);
             this.buttonNesav.TabIndex = 2;
             this.buttonNesav.Text = "Незавершенные взвешивания";
-            this.buttonNesav.UseVisualStyleBackColor = true;
+            this.buttonNesav.UseVisualStyleBackColor = false;
             this.buttonNesav.Click += new System.EventHandler(this.buttonNesav_Click);
             // 
             // buttonAll
             // 
-            this.buttonAll.Location = new System.Drawing.Point(577, 65);
+            this.buttonAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.buttonAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
+            this.buttonAll.FlatAppearance.BorderSize = 2;
+            this.buttonAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAll.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.buttonAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
+            this.buttonAll.Location = new System.Drawing.Point(1058, 53);
             this.buttonAll.Name = "buttonAll";
-            this.buttonAll.Size = new System.Drawing.Size(308, 23);
+            this.buttonAll.Size = new System.Drawing.Size(248, 49);
             this.buttonAll.TabIndex = 3;
             this.buttonAll.Text = "Все взвешивания";
-            this.buttonAll.UseVisualStyleBackColor = true;
+            this.buttonAll.UseVisualStyleBackColor = false;
             this.buttonAll.Click += new System.EventHandler(this.buttonAll_Click);
             // 
             // listViewOperation
@@ -100,28 +118,29 @@
             this.columnCar,
             this.columnNumberCar,
             this.columnEnded});
-            this.listViewOperation.Location = new System.Drawing.Point(12, 132);
+            this.listViewOperation.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.listViewOperation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.listViewOperation.Location = new System.Drawing.Point(18, 108);
             this.listViewOperation.Name = "listViewOperation";
-            this.listViewOperation.Size = new System.Drawing.Size(1057, 449);
+            this.listViewOperation.Size = new System.Drawing.Size(1542, 722);
             this.listViewOperation.TabIndex = 4;
             this.listViewOperation.UseCompatibleStateImageBehavior = false;
             this.listViewOperation.View = System.Windows.Forms.View.Details;
-            this.listViewOperation.MouseDoubleClick += ListViewOperation_MouseDoubleClick1;
             // 
             // columnNumber
             // 
             this.columnNumber.Text = "Номер";
-            this.columnNumber.Width = 66;
+            this.columnNumber.Width = 93;
             // 
             // columnData
             // 
             this.columnData.Text = "Дата";
-            this.columnData.Width = 68;
+            this.columnData.Width = 90;
             // 
             // columnAutor
             // 
             this.columnAutor.Text = "Автор";
-            this.columnAutor.Width = 79;
+            this.columnAutor.Width = 88;
             // 
             // columnRegim
             // 
@@ -146,17 +165,17 @@
             // columnVesConteiner
             // 
             this.columnVesConteiner.Text = "Вес контейнера";
-            this.columnVesConteiner.Width = 108;
+            this.columnVesConteiner.Width = 134;
             // 
             // columnCar
             // 
             this.columnCar.Text = "Автомобиль";
-            this.columnCar.Width = 87;
+            this.columnCar.Width = 108;
             // 
             // columnNumberCar
             // 
             this.columnNumberCar.Text = "Номерной знак";
-            this.columnNumberCar.Width = 102;
+            this.columnNumberCar.Width = 113;
             // 
             // columnEnded
             // 
@@ -167,13 +186,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 593);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1584, 862);
             this.Controls.Add(this.listViewOperation);
             this.Controls.Add(this.buttonAll);
             this.Controls.Add(this.buttonNesav);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "MainFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Взвешивание транспорта";
             this.Load += new System.EventHandler(this.MainFrm_Load);
             this.ResumeLayout(false);
