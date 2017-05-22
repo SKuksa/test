@@ -77,7 +77,6 @@
             this.buttonNesav.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonNesav.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
             this.buttonNesav.FlatAppearance.BorderSize = 2;
-            this.buttonNesav.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNesav.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buttonNesav.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
             this.buttonNesav.Location = new System.Drawing.Point(1312, 53);
@@ -93,7 +92,7 @@
             this.buttonAll.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttonAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
             this.buttonAll.FlatAppearance.BorderSize = 2;
-            this.buttonAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAll.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
             this.buttonAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
             this.buttonAll.Location = new System.Drawing.Point(1058, 53);
@@ -126,6 +125,7 @@
             this.listViewOperation.TabIndex = 4;
             this.listViewOperation.UseCompatibleStateImageBehavior = false;
             this.listViewOperation.View = System.Windows.Forms.View.Details;
+            this.listViewOperation.MouseDoubleClick += ListViewOperation_MouseDoubleClick1;
             // 
             // columnNumber
             // 

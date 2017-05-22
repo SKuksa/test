@@ -63,7 +63,6 @@
             this.buttonTara = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -90,8 +89,8 @@
             this.вставкаToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.справкаToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -121,7 +120,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(832, 490);
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBoxSclad
             // 
@@ -132,7 +130,6 @@
             this.textBoxSclad.Name = "textBoxSclad";
             this.textBoxSclad.Size = new System.Drawing.Size(151, 29);
             this.textBoxSclad.TabIndex = 18;
-            this.textBoxSclad.TextChanged += new System.EventHandler(this.textBoxSclad_TextChanged);
             // 
             // label22
             // 
@@ -145,7 +142,6 @@
             this.label22.Size = new System.Drawing.Size(56, 21);
             this.label22.TabIndex = 17;
             this.label22.Text = "Склад:";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
             // 
             // textBoxTovar
             // 
@@ -166,7 +162,6 @@
             this.textBoxGrusoPoluch.Name = "textBoxGrusoPoluch";
             this.textBoxGrusoPoluch.Size = new System.Drawing.Size(151, 29);
             this.textBoxGrusoPoluch.TabIndex = 15;
-            this.textBoxGrusoPoluch.TextChanged += new System.EventHandler(this.textBoxGrusoPoluch_TextChanged);
             // 
             // textBoxGrusoOtpr
             // 
@@ -177,7 +172,6 @@
             this.textBoxGrusoOtpr.Name = "textBoxGrusoOtpr";
             this.textBoxGrusoOtpr.Size = new System.Drawing.Size(151, 29);
             this.textBoxGrusoOtpr.TabIndex = 14;
-            this.textBoxGrusoOtpr.TextChanged += new System.EventHandler(this.textBoxGrusoOtpr_TextChanged);
             // 
             // label18
             // 
@@ -202,7 +196,6 @@
             this.label17.Size = new System.Drawing.Size(136, 21);
             this.label17.TabIndex = 12;
             this.label17.Text = "Грузополучатель:";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -215,7 +208,6 @@
             this.label16.Size = new System.Drawing.Size(144, 21);
             this.label16.TabIndex = 11;
             this.label16.Text = "Грузоотправитель:";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // textBoxPricepNumber
             // 
@@ -238,7 +230,6 @@
             this.textBoxPricep.Name = "textBoxPricep";
             this.textBoxPricep.Size = new System.Drawing.Size(151, 29);
             this.textBoxPricep.TabIndex = 8;
-            this.textBoxPricep.TextChanged += new System.EventHandler(this.textBoxPricep_TextChanged);
             // 
             // label14
             // 
@@ -251,7 +242,6 @@
             this.label14.Size = new System.Drawing.Size(69, 21);
             this.label14.TabIndex = 7;
             this.label14.Text = "Прицеп:";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // textBoxVodila
             // 
@@ -262,7 +252,6 @@
             this.textBoxVodila.Name = "textBoxVodila";
             this.textBoxVodila.Size = new System.Drawing.Size(151, 29);
             this.textBoxVodila.TabIndex = 5;
-            this.textBoxVodila.TextChanged += new System.EventHandler(this.textBoxVodila_TextChanged);
             // 
             // label13
             // 
@@ -275,7 +264,6 @@
             this.label13.Size = new System.Drawing.Size(80, 21);
             this.label13.TabIndex = 3;
             this.label13.Text = "Водитель:";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // textBoxAuto
             // 
@@ -287,7 +275,6 @@
             this.textBoxAuto.Name = "textBoxAuto";
             this.textBoxAuto.Size = new System.Drawing.Size(151, 29);
             this.textBoxAuto.TabIndex = 1;
-            this.textBoxAuto.TextChanged += new System.EventHandler(this.textBoxAuto_TextChanged);
             // 
             // label11
             // 
@@ -300,7 +287,6 @@
             this.label11.Size = new System.Drawing.Size(101, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = "Автомобиль:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // textBoxAutorBrutto
             // 
@@ -312,7 +298,6 @@
             this.textBoxAutorBrutto.ReadOnly = true;
             this.textBoxAutorBrutto.Size = new System.Drawing.Size(251, 29);
             this.textBoxAutorBrutto.TabIndex = 49;
-            this.textBoxAutorBrutto.TextChanged += new System.EventHandler(this.textBoxAutorBrutto_TextChanged);
             // 
             // textBoxAutorTara
             // 
@@ -324,7 +309,6 @@
             this.textBoxAutorTara.ReadOnly = true;
             this.textBoxAutorTara.Size = new System.Drawing.Size(251, 29);
             this.textBoxAutorTara.TabIndex = 48;
-            this.textBoxAutorTara.TextChanged += new System.EventHandler(this.textBoxAutorTara_TextChanged);
             // 
             // textBoxAutor
             // 
@@ -335,7 +319,6 @@
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(251, 29);
             this.textBoxAutor.TabIndex = 47;
-            this.textBoxAutor.TextChanged += new System.EventHandler(this.textBoxAutor_TextChanged);
             // 
             // label10
             // 
@@ -347,7 +330,6 @@
             this.label10.Size = new System.Drawing.Size(109, 21);
             this.label10.TabIndex = 46;
             this.label10.Text = "Автор брутто:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
@@ -359,7 +341,6 @@
             this.label9.Size = new System.Drawing.Size(89, 21);
             this.label9.TabIndex = 45;
             this.label9.Text = "АвторТара:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
@@ -371,7 +352,6 @@
             this.label8.Size = new System.Drawing.Size(56, 21);
             this.label8.TabIndex = 44;
             this.label8.Text = "Автор:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // maskedTextBoxDataBrutto
             // 
@@ -384,7 +364,6 @@
             this.maskedTextBoxDataBrutto.ReadOnly = true;
             this.maskedTextBoxDataBrutto.Size = new System.Drawing.Size(144, 29);
             this.maskedTextBoxDataBrutto.TabIndex = 43;
-            this.maskedTextBoxDataBrutto.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBoxDataBrutto_MaskInputRejected);
             // 
             // maskedTextBoxDataTara
             // 
@@ -397,7 +376,6 @@
             this.maskedTextBoxDataTara.ReadOnly = true;
             this.maskedTextBoxDataTara.Size = new System.Drawing.Size(145, 29);
             this.maskedTextBoxDataTara.TabIndex = 42;
-            this.maskedTextBoxDataTara.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBoxDataTara_MaskInputRejected);
             // 
             // textBoxNumberVs
             // 
@@ -409,7 +387,6 @@
             this.textBoxNumberVs.ReadOnly = true;
             this.textBoxNumberVs.Size = new System.Drawing.Size(145, 29);
             this.textBoxNumberVs.TabIndex = 41;
-            this.textBoxNumberVs.TextChanged += new System.EventHandler(this.textBoxNumberVs_TextChanged);
             // 
             // label7
             // 
@@ -421,7 +398,6 @@
             this.label7.Size = new System.Drawing.Size(100, 21);
             this.label7.TabIndex = 40;
             this.label7.Text = "Дата брутто:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -433,7 +409,6 @@
             this.label6.Size = new System.Drawing.Size(83, 21);
             this.label6.TabIndex = 39;
             this.label6.Text = "Дата тара:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -445,7 +420,6 @@
             this.label5.Size = new System.Drawing.Size(128, 21);
             this.label5.TabIndex = 38;
             this.label5.Text = "Номер опреции:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // buttonBrutto
             // 
@@ -460,8 +434,8 @@
             this.buttonBrutto.Size = new System.Drawing.Size(144, 49);
             this.buttonBrutto.TabIndex = 37;
             this.buttonBrutto.Text = "Взвесить";
+            this.buttonBrutto.Click += this.buttonBrutto_Click;
             this.buttonBrutto.UseVisualStyleBackColor = false;
-            this.buttonBrutto.Click += new System.EventHandler(this.buttonBrutto_Click_1);
             // 
             // textWeight
             // 
@@ -472,7 +446,6 @@
             this.textWeight.Size = new System.Drawing.Size(144, 29);
             this.textWeight.TabIndex = 36;
             this.textWeight.Text = "0";
-            this.textWeight.TextChanged += new System.EventHandler(this.textWeight_TextChanged);
             // 
             // buttonTara
             // 
@@ -488,7 +461,7 @@
             this.buttonTara.TabIndex = 35;
             this.buttonTara.Text = "Взвесить";
             this.buttonTara.UseVisualStyleBackColor = false;
-            this.buttonTara.Click += new System.EventHandler(this.buttonTara_Click_1);
+            this.buttonTara.Click += new System.EventHandler(this.buttonTara_Click);
             // 
             // label4
             // 
@@ -500,7 +473,6 @@
             this.label4.Size = new System.Drawing.Size(131, 21);
             this.label4.TabIndex = 34;
             this.label4.Text = "Текущий вес (кг):";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label2
             // 
@@ -512,24 +484,6 @@
             this.label2.Size = new System.Drawing.Size(208, 21);
             this.label2.TabIndex = 31;
             this.label2.Text = "Пост1 Режим взвешивания:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(156)))), ((int)(((byte)(219)))));
-            this.buttonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(1046, 729);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(144, 53);
-            this.buttonSave.TabIndex = 30;
-            this.buttonSave.Text = "Записать и закрыть";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click_1);
             // 
             // panel1
             // 
@@ -540,7 +494,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(151, 37);
             this.panel1.TabIndex = 52;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // textBoxAutoNumber
             // 
@@ -563,7 +516,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(151, 37);
             this.panel2.TabIndex = 53;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // textBoxNetto
             // 
@@ -575,7 +527,6 @@
             this.textBoxNetto.ReadOnly = true;
             this.textBoxNetto.Size = new System.Drawing.Size(144, 29);
             this.textBoxNetto.TabIndex = 59;
-            this.textBoxNetto.TextChanged += new System.EventHandler(this.textBoxNetto_TextChanged);
             // 
             // textBoxBrutto
             // 
@@ -587,7 +538,6 @@
             this.textBoxBrutto.ReadOnly = true;
             this.textBoxBrutto.Size = new System.Drawing.Size(144, 29);
             this.textBoxBrutto.TabIndex = 58;
-            this.textBoxBrutto.TextChanged += new System.EventHandler(this.textBoxBrutto_TextChanged);
             // 
             // textBoxTara
             // 
@@ -599,7 +549,6 @@
             this.textBoxTara.ReadOnly = true;
             this.textBoxTara.Size = new System.Drawing.Size(144, 29);
             this.textBoxTara.TabIndex = 57;
-            this.textBoxTara.TextChanged += new System.EventHandler(this.textBoxTara_TextChanged);
             // 
             // label21
             // 
@@ -611,7 +560,6 @@
             this.label21.Size = new System.Drawing.Size(83, 21);
             this.label21.TabIndex = 56;
             this.label21.Text = "Нетто (кг):";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // label20
             // 
@@ -623,7 +571,6 @@
             this.label20.Size = new System.Drawing.Size(90, 21);
             this.label20.TabIndex = 55;
             this.label20.Text = "Брутто (кг):";
-            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label19
             // 
@@ -635,7 +582,6 @@
             this.label19.Size = new System.Drawing.Size(104, 21);
             this.label19.TabIndex = 54;
             this.label19.Text = "Вес тары (кг):";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
             // comboBox1
             // 
@@ -650,7 +596,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 27);
             this.comboBox1.TabIndex = 60;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // toolStripContainer1
             // 
@@ -662,7 +607,6 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel4);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel3);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label1);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.buttonSave);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label2);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.comboBox1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label4);
@@ -705,7 +649,6 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutorBrutto);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pictureBox1);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1584, 831);
-            this.toolStripContainer1.ContentPanel.Load += new System.EventHandler(this.toolStripContainer1_ContentPanel_Load);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -716,7 +659,6 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            this.toolStripContainer1.TopToolStripPanel.Click += new System.EventHandler(this.toolStripContainer1_TopToolStripPanel_Click);
             // 
             // panel6
             // 
@@ -767,10 +709,10 @@
             this.toolStripSeparator1,
             this.справкаToolStripButton,
             this.toolStripSeparator2,
-            this.toolStripButton1});
+            this.toolStripButtonSave});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(448, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(479, 31);
             this.toolStrip1.TabIndex = 0;
             // 
             // создатьToolStripButton
@@ -855,21 +797,21 @@
             this.справкаToolStripButton.Size = new System.Drawing.Size(28, 28);
             this.справкаToolStripButton.Text = "Справка";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(16, 1, 0, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(178, 28);
-            this.toolStripButton1.Text = "Записать и закрыть";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripButtonSave
+            // 
+            this.toolStripButtonSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(128)))), ((int)(((byte)(237)))));
+            this.toolStripButtonSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSave.Image")));
+            this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSave.Margin = new System.Windows.Forms.Padding(16, 1, 0, 2);
+            this.toolStripButtonSave.Name = "toolStripButtonSave";
+            this.toolStripButtonSave.Size = new System.Drawing.Size(178, 28);
+            this.toolStripButtonSave.Text = "Записать и закрыть";
+            this.toolStripButtonSave.Click += buttonSave_Click;
             // 
             // Form1
             // 
@@ -942,7 +884,6 @@
         private System.Windows.Forms.Button buttonTara;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBoxAutoNumber;
         private System.Windows.Forms.Panel panel2;
@@ -969,7 +910,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
