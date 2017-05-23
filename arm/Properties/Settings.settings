@@ -8,8 +8,5 @@
     <Setting Name="PathDB" Type="System.String" Scope="Application">
       <Value Profile="(Default)">c:\cards\</Value>
     </Setting>
-    <Setting Name="Параметр" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

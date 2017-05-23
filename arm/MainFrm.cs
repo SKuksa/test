@@ -219,16 +219,19 @@ namespace arm
       
         static private void SaveJsonDB(Type tp, object Values, string FileName)
         {
-
-            ///MemoryStream stream1 = new MemoryStream();
-            ///
-            var strFile = File.Create(FileName);
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(tp, new DataContractJsonSerializerSettings
+            try
             {
-                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
-            });
-            ser.WriteObject(strFile, Values);
-            strFile.Close();
+                ///MemoryStream stream1 = new MemoryStream();
+                ///
+                var strFile = File.Create(FileName);
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(tp, new DataContractJsonSerializerSettings
+                {
+                    DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+                });
+                ser.WriteObject(strFile, Values);
+                strFile.Close();
+            }
+            catch (Exception ex) { }
         }
         static private object LoadJsonDB(Type tp, string FileName)
         {
@@ -307,18 +310,226 @@ namespace arm
             {
                 DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
             });
-          
+         
+            System.IO.Stream strem = request.InputStream;
+            int ln =(int)request.ContentLength64;
             var rdr = new StreamReader(stream1, Encoding.UTF8);
-          
-            lock (listWeight)
+            byte[] buf = new byte[ln];
+
+            strem.Read(buf, 0, ln);
+            stream1.Write(buf, 0, ln);
+            stream1.Position = 0;
+            var obj = ser.ReadObject(stream1);
+     
+            lock (listCars)
             {
-                rec = listWeight.ToArray();
+                listCars = ((Cars[])obj).ToList();
+                SaveJsonDB(typeof(Cars[]), listCars, Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
             }
-            rec = rec.Where(x =>
+
+            var rs = listCars.Select(x =>
+             {
+                 return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+             }).ToArray();
+            ser= new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
-                var date = x.dataBrutto > x.dataTara ? x.dataBrutto : x.dataTara;
-                return date >= Start && date <= End;
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+            stream1 = new MemoryStream();
+            rdr=new StreamReader(stream1, Encoding.UTF8);
+            ser.WriteObject(stream1, rs);
+            stream1.Position = 0;
+            var ret = rdr.ReadToEnd();
+            rdr.Close();
+            stream1.Close();
+            {
+                {
+                    System.Net.HttpListenerResponse response = context.Response;
+                    response.ContentType = "application/json";
+
+                    string responseString = ret;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.Length;
+                    Stream output = response.OutputStream;
+                    output.Write(buffer, 0, buffer.Length);
+                    output.Close();
+                }
+            }
+        }
+        void WebShippers(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
+        {
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Shipper[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+
+            System.IO.Stream strem = request.InputStream;
+            int ln = (int)request.ContentLength64;
+            var rdr = new StreamReader(stream1, Encoding.UTF8);
+            byte[] buf = new byte[ln];
+
+            strem.Read(buf, 0, ln);
+            stream1.Write(buf, 0, ln);
+            stream1.Position = 0;
+            var obj = ser.ReadObject(stream1);
+            lock (listShipper)
+            {
+                listShipper = ((Shipper[])obj).ToList();
+                SaveJsonDB(typeof(Shipper[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listShipper.txt"));
+            }
+
+            var rs = listShipper.Select(x =>
+            {
+                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
             }).ToArray();
+            ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+            stream1 = new MemoryStream();
+            rdr = new StreamReader(stream1, Encoding.UTF8);
+            ser.WriteObject(stream1, rs);
+            stream1.Position = 0;
+            var ret = rdr.ReadToEnd();
+            rdr.Close();
+            stream1.Close();
+            {
+                {
+                    System.Net.HttpListenerResponse response = context.Response;
+                    response.ContentType = "application/json";
+
+                    string responseString = ret;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.Length;
+                    Stream output = response.OutputStream;
+                    output.Write(buffer, 0, buffer.Length);
+                    output.Close();
+                }
+            }
+        }
+        void WebConsignee(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
+        {
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Consignee[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+
+            System.IO.Stream strem = request.InputStream;
+            int ln = (int)request.ContentLength64;
+            var rdr = new StreamReader(stream1, Encoding.UTF8);
+            byte[] buf = new byte[ln];
+
+            strem.Read(buf, 0, ln);
+            stream1.Write(buf, 0, ln);
+            stream1.Position = 0;
+            var obj = ser.ReadObject(stream1);
+            lock (listConsignee)
+            {
+                listConsignee = ((Consignee[])obj).ToList();
+                SaveJsonDB(typeof(Consignee[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listConsignee.txt"));
+            }
+
+            var rs = listConsignee.Select(x =>
+            {
+                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+            }).ToArray();
+            ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+            stream1 = new MemoryStream();
+            rdr = new StreamReader(stream1, Encoding.UTF8);
+            ser.WriteObject(stream1, rs);
+            stream1.Position = 0;
+            var ret = rdr.ReadToEnd();
+            rdr.Close();
+            stream1.Close();
+            {
+                {
+                    System.Net.HttpListenerResponse response = context.Response;
+                    response.ContentType = "application/json";
+
+                    string responseString = ret;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.Length;
+                    Stream output = response.OutputStream;
+                    output.Write(buffer, 0, buffer.Length);
+                    output.Close();
+                }
+            }
+        }
+        void WebWeighman(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
+        {
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Weighman[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+
+            System.IO.Stream strem = request.InputStream;
+            int ln = (int)request.ContentLength64;
+            var rdr = new StreamReader(stream1, Encoding.UTF8);
+            byte[] buf = new byte[ln];
+
+            strem.Read(buf, 0, ln);
+            stream1.Write(buf, 0, ln);
+            stream1.Position = 0;
+            var obj = ser.ReadObject(stream1);
+            lock (listWeighman)
+            {
+                listWeighman = ((Weighman[])obj).ToList();
+                SaveJsonDB(typeof(Weighman[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
+            }
+
+            var rs = listWeighman.Select(x =>
+            {
+                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+            }).ToArray();
+            ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+            stream1 = new MemoryStream();
+            rdr = new StreamReader(stream1, Encoding.UTF8);
+            ser.WriteObject(stream1, rs);
+            stream1.Position = 0;
+            var ret = rdr.ReadToEnd();
+            rdr.Close();
+            stream1.Close();
+            {
+                {
+                    System.Net.HttpListenerResponse response = context.Response;
+                    response.ContentType = "application/json";
+
+                    string responseString = ret;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.Length;
+                    Stream output = response.OutputStream;
+                    output.Write(buffer, 0, buffer.Length);
+                    output.Close();
+                }
+            }
+        }
+        void WebWeighingMode(string[] str, System.Net.HttpListenerContext context)
+        {
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(WeighingMode[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+        
+            var rdr = new StreamReader(stream1, Encoding.UTF8);
+            WeighingMode[] rec;
+            lock (listWeighingMode)
+            {
+                rec = listWeighingMode.ToArray();
+            }
             ser.WriteObject(stream1, rec);
             stream1.Position = 0;
             var ret = rdr.ReadToEnd();
@@ -338,6 +549,7 @@ namespace arm
                     output.Close();
                 }
             }
+
         }
         void Web()
         {
@@ -360,10 +572,23 @@ namespace arm
                             var str = request.RawUrl.Split('&');
                             switch (str[0].ToUpper())
                             {
-                                case "WEIGHING":
+                                case "/WEIGHING":
                                     WebWeighing(str, context);
                                     break;
-                                case "CARS":
+                                case "/CARS":
+                                    WebCars(str, request, context);
+                                    break;
+                                case "/SHIPPERS":
+                                    WebShippers(str, request, context);
+                                    break;
+                                case "/CONSIGNEE":
+                                    WebConsignee(str, request, context);
+                                    break;
+                                case "/WEIGHMAN":
+                                    WebWeighman(str, request, context);
+                                    break;
+                                case "/WEIGHINGMODE":
+                                    WebWeighingMode(str, context);
                                     break;
                             }
                             /*
