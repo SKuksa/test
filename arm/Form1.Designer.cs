@@ -417,9 +417,9 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.label5.Location = new System.Drawing.Point(157, 662);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 21);
+            this.label5.Size = new System.Drawing.Size(136, 21);
             this.label5.TabIndex = 38;
-            this.label5.Text = "Номер опреции:";
+            this.label5.Text = "Номер операции:";
             // 
             // buttonBrutto
             // 
@@ -434,7 +434,6 @@
             this.buttonBrutto.Size = new System.Drawing.Size(144, 49);
             this.buttonBrutto.TabIndex = 37;
             this.buttonBrutto.Text = "Взвесить";
-            this.buttonBrutto.Click += this.buttonBrutto_Click;
             this.buttonBrutto.UseVisualStyleBackColor = false;
             // 
             // textWeight
@@ -648,7 +647,7 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutorTara);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutorBrutto);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pictureBox1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1584, 831);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1559, 831);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -712,7 +711,7 @@
             this.toolStripButtonSave});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(479, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(448, 31);
             this.toolStrip1.TabIndex = 0;
             // 
             // создатьToolStripButton
@@ -811,7 +810,7 @@
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(178, 28);
             this.toolStripButtonSave.Text = "Записать и закрыть";
-            this.toolStripButtonSave.Click += buttonSave_Click;
+            this.toolStripButtonSave.Click += this.buttonSave_Click;
             // 
             // Form1
             // 

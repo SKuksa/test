@@ -235,10 +235,9 @@
                             listViewOperation.Items[i].SubItems[7].Text = frm.rec.WeightTara.ToString();
                             listViewOperation.Items[i].SubItems[8].Text = frm.rec.CarName;
                             listViewOperation.Items[i].SubItems[9].Text = frm.rec.CarNumber;
+                            listViewOperation.Items[i].SubItems[10].Text = frm.rec.dataBrutto != System.DateTime.MinValue && frm.rec.dataTara != System.DateTime.MinValue ? "ДА" : "НЕТ";
 
-                            if (buttonAll.FlatStyle == System.Windows.Forms.FlatStyle.Popup)
-                               ;
-                            else
+                            if (buttonAll.FlatStyle != System.Windows.Forms.FlatStyle.Popup)
                             {
                                 if (frm.rec.dataBrutto != System.DateTime.MinValue && frm.rec.dataTara != System.DateTime.MinValue)
                                     listViewOperation.Items.RemoveAt(i);

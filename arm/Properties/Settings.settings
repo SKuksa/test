@@ -2,16 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="arm.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Host" Type="System.String" Scope="User">
+    <Setting Name="Host" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://localhost:8080/</Value>
     </Setting>
-    <Setting Name="FileName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">c:\cards\cards.xml</Value>
+    <Setting Name="PathDB" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\cards\</Value>
     </Setting>
-    <Setting Name="NumberCard" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Параметр" Type="System.String" Scope="User">
+    <Setting Name="Параметр" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

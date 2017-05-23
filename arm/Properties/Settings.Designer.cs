@@ -23,51 +23,30 @@ namespace arm.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/")]
         public string Host {
             get {
                 return ((string)(this["Host"]));
             }
-            set {
-                this["Host"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\cards\\cards.xml")]
-        public string FileName {
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\cards\\")]
+        public string PathDB {
             get {
-                return ((string)(this["FileName"]));
-            }
-            set {
-                this["FileName"] = value;
+                return ((string)(this["PathDB"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int NumberCard {
-            get {
-                return ((int)(this["NumberCard"]));
-            }
-            set {
-                this["NumberCard"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Параметр {
             get {
                 return ((string)(this["Параметр"]));
-            }
-            set {
-                this["Параметр"] = value;
             }
         }
     }
