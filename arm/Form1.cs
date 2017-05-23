@@ -43,7 +43,7 @@ namespace arm
             if(rec==null)
                 comboBox1.SelectedIndex = 0;
             else
-                if(rec.dataTara== DateTime.MinValue && rec.dataBrutto==DateTime.MinValue)
+                if(rec.DateTare== DateTime.MinValue && rec.DateGross==DateTime.MinValue)
                     comboBox1.SelectedIndex = 0;
 
         }
@@ -85,7 +85,8 @@ namespace arm
             maskedTextBoxDataTara.Tag = DateTime.Now;
 
             textBoxTara.Text = textWeight.Text;
-            textBoxAutorTara.Text = textBoxAutor.Text;
+            //comboBoxAutor.SelectedItem
+            textBoxAutorTara.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString(); ; //textBoxAutor.Text;
 
             if (!AsNettoBrutto())
             {
@@ -139,7 +140,8 @@ namespace arm
             maskedTextBoxDataBrutto.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
             maskedTextBoxDataBrutto.Tag = DateTime.Now;
             textBoxBrutto.Text = textWeight.Text;
-            textBoxAutorBrutto.Text = textBoxAutor.Text;
+            textBoxAutorBrutto.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString();
+                ;// textBoxAutor.Text;
 
             if (AsNettoBrutto())
             {
@@ -165,8 +167,9 @@ namespace arm
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+           
             DialogResult = DialogResult.OK;
-            rec.AutoBrutto = textBoxAutorBrutto.Text;
+             /*rec.AutoBrutto = textBoxAutorBrutto.Text;
             rec.Autor = textBoxAutor.Text;
             rec.AutoTara = textBoxAutorTara.Text;
             rec.CarDriver = textBoxVodila.Text;
@@ -192,36 +195,72 @@ namespace arm
             rec.WeightBrutto = int.Parse(textBoxBrutto.Text);
             rec.WeightNetto = int.Parse(textBoxNetto.Text);
             rec.WeightTara = int.Parse(textBoxTara.Text);
-            rec.Regim = (string)comboBox1.SelectedItem;
+            rec.Regim = (string)comboBox1.SelectedItem;*/
             Close();
         }
         void Init()
         {
-            if (rec.dataTara == DateTime.MinValue && rec.dataBrutto == DateTime.MinValue)//Инициализация новой карточки
+            if (MainFrm.listWeighman != null)
+            {
+                lock (MainFrm.listWeighman)
+                {
+                    comboBoxAutor.Items.AddRange(MainFrm.listWeighman.OrderBy(x=>x.Name).ToArray());
+                }
+            }
+            if (MainFrm.listCars != null)
+            {
+                lock (MainFrm.listCars)
+                {
+                    comboBoxAutoNumber.Items.AddRange(MainFrm.listCars.OrderBy(x=>x.CarNumber).ToArray());
+                }
+            }
+            if (MainFrm.listShipper != null)
+            {
+                lock (MainFrm.listShipper)
+                {
+                    comboBoxGrusoOtpr.Items.AddRange(MainFrm.listShipper.OrderBy(x=>x.Name).ToArray());
+                }
+            }
+            if (MainFrm.listConsignee != null)
+            {
+                lock (MainFrm.listConsignee)
+                {
+                    comboBoxGrusPoluch.Items.AddRange(MainFrm.listConsignee.OrderBy(x=>x.Name).ToArray());
+                }
+            }
+            if (MainFrm.listMaterial != null)
+            {
+                lock (MainFrm.listMaterial)
+                {
+                    comboBoxTovar.Items.AddRange(MainFrm.listMaterial.OrderBy(x=>x.Name).ToArray());
+                }
+            }
+            
+            if (rec.DateTare == DateTime.MinValue && rec.DateGross == DateTime.MinValue)//Инициализация новой карточки
             {
 
             }
 
-            if (rec.dataTara == DateTime.MinValue && rec.dataBrutto != DateTime.MinValue)//Взвесили брутто не взвесили нетто
+            if (rec.DateTare == DateTime.MinValue && rec.DateGross != DateTime.MinValue)//Взвесили брутто не взвесили нетто
             {
-                maskedTextBoxDataBrutto.Text = rec.dataBrutto.ToString("dd/MM/yyyy hh:mm:ss");
-                maskedTextBoxDataBrutto.Tag = rec.dataBrutto;
+                maskedTextBoxDataBrutto.Text = rec.DateGross.ToString("dd/MM/yyyy hh:mm:ss");
+                maskedTextBoxDataBrutto.Tag = rec.DateGross;
                 comboBox1.SelectedIndex = 1;
                 buttonBrutto.Enabled = false;
                 buttonBrutto.Visible = false;
 
 
             }
-            if (rec.dataTara != DateTime.MinValue && rec.dataBrutto == DateTime.MinValue)//Взвесили нетто не взвесили брутто
+            if (rec.DateTare != DateTime.MinValue && rec.DateGross == DateTime.MinValue)//Взвесили нетто не взвесили брутто
             {
-                maskedTextBoxDataTara.Text = rec.dataTara.ToString("dd/MM/yyyy hh:mm:ss");
-                maskedTextBoxDataTara.Tag = rec.dataTara;
+                maskedTextBoxDataTara.Text = rec.DateTare.ToString("dd/MM/yyyy hh:mm:ss");
+                maskedTextBoxDataTara.Tag = rec.DateTare;
                 comboBox1.SelectedIndex = 0;
                 buttonTara.Enabled = false;
                 buttonTara.Visible = false;
             }
 
-            if (rec.dataTara != DateTime.MinValue && rec.dataBrutto != DateTime.MinValue)//Все взвесили просмотр
+            if (rec.DateTare != DateTime.MinValue && rec.DateGross != DateTime.MinValue)//Все взвесили просмотр
             {
                 //buttonSave.Text = "Закрыть";
                 toolStripButtonSave.Text = "Закрыть";
@@ -229,35 +268,42 @@ namespace arm
                 buttonTara.Visible = false;
                 buttonBrutto.Enabled = false;
                 buttonBrutto.Visible = false;
-                maskedTextBoxDataBrutto.Text = rec.dataBrutto.ToString("dd/MM/yyyy hh:mm:ss");
-                maskedTextBoxDataBrutto.Tag = rec.dataBrutto;
-                maskedTextBoxDataTara.Text = rec.dataTara.ToString("dd/MM/yyyy hh:mm:ss");
-                maskedTextBoxDataTara.Tag = rec.dataTara;
+                maskedTextBoxDataBrutto.Text = rec.DateGross.ToString("dd/MM/yyyy hh:mm:ss");
+                maskedTextBoxDataBrutto.Tag = rec.DateGross;
+                maskedTextBoxDataTara.Text = rec.DateTare.ToString("dd/MM/yyyy hh:mm:ss");
+                maskedTextBoxDataTara.Tag = rec.DateTare;
 
-                if(rec.dataTara> rec.dataBrutto)
+                if(rec.DateTare> rec.DateGross)
                     comboBox1.SelectedIndex = 1;
                 else
                     comboBox1.SelectedIndex = 0;
                 textBoxAutorBrutto.Enabled=false;
-                textBoxAutor.Enabled = false;
+
+
+                comboBoxAutor.Enabled = false;
+                //textBoxAutor.Enabled = false;
                 textBoxAutorTara.Enabled = false;
                 textBoxVodila.Enabled = false;
                 textBoxAuto.Enabled = false;
-                textBoxAutoNumber.Enabled = false;
+                comboBoxAutoNumber.Enabled = false;
+                //textBoxAutoNumber.Enabled = false;
 
-                textBoxGrusoOtpr.Enabled = false;
-                textBoxGrusoPoluch.Enabled = false;
+                //textBoxGrusoOtpr.Enabled = false;
+                comboBoxGrusoOtpr.Enabled = false;
+                //textBoxGrusoPoluch.Enabled = false;
+                comboBoxGrusPoluch.Enabled = false;
 
                 textBoxNumberVs.Enabled = false;
                 textBoxPricep.Enabled = false;
                 textBoxPricepNumber.Enabled = false;
-                textBoxSclad.Enabled = false;
-                textBoxTovar.Enabled = false;
+                //textBoxSclad.Enabled = false;
+                //textBoxTovar.Enabled = false;
+                comboBoxTovar.Enabled = false;
                 textBoxBrutto.Enabled = false;
                 textBoxNetto.Enabled = false;
                 textBoxTara.Enabled = false;
                 comboBox1.Enabled = false;
-                if (rec.Regim == (string)comboBox1.SelectedItem)
+                if (rec.WeighingMode == (string)comboBox1.SelectedItem)
                     if (comboBox1.SelectedIndex == 0)
                         comboBox1.SelectedIndex = 1;
                      else
@@ -271,28 +317,90 @@ namespace arm
 
 
 
-            textBoxAutorBrutto.Text =rec.AutoBrutto;
-            textBoxAutor.Text =rec.Autor;
-            textBoxAutorTara.Text =rec.AutoTara;
-            textBoxVodila.Text =rec.CarDriver;
-            textBoxAuto.Text =rec.CarName ;
-            textBoxAutoNumber.Text =rec.CarNumber;
+            foreach (var it in comboBoxAutor.Items)
+            {
+                if (((Weighman)it).Code == rec.WeighmanGross)
+                    textBoxAutorBrutto.Text = ((Weighman)it).Name;
+                if (((Weighman)it).Code == rec.WeighmanTare)
+                    textBoxAutorTara.Text = ((Weighman)it).Name;
 
-            textBoxGrusoOtpr.Text =rec.GrusOtprav;
-            textBoxGrusoPoluch.Text =rec.GrusPoluch;
 
-            textBoxNumberVs.Text =rec.Number.ToString();
-            textBoxPricep.Text =rec.Pricep;
-            textBoxPricepNumber.Text =rec.PricepNumber;
-            textBoxSclad.Text =rec.Sclad;
-            textBoxTovar.Text=rec.Tovar ;
-            textBoxBrutto.Text = rec.WeightBrutto.ToString();// = int.Parse(textBoxBrutto.Text);
-            textBoxNetto.Text = rec.WeightNetto.ToString();// = int.Parse(textBoxNetto.Text);
+                //textBoxAutorTara.Text = rec.AutoTara;
+
+                //textBoxAutorBrutto.Text = rec.WeighmanGross;// .AutoBrutto;
+            }
+            foreach (var it in comboBoxAutoNumber.Items)
+            {
+                if (((Cars)it).Code == rec.Autotruck)
+                {
+                    textBoxVodila.Text = ((Cars)it).Driver;
+                    textBoxAuto.Text = ((Cars)it).Carbrand;
+                    textBoxPricepNumber.Text = ((Cars)it).TrailerNumber;
+                    comboBoxAutoNumber.SelectedItem = it;
+                    break;
+                }
+                //textBoxVodila.Text = rec.CarDriver;
+                //textBoxAuto.Text = rec.CarName;
+                //textBoxAutoNumber.Text = rec.CarNumber;
+            }
+
+            //textBoxAutorBrutto.Text =   rec.AutoBrutto;
+            //textBoxAutor.Text =rec.Autor;
+            //textBoxAutorTara.Text =rec.AutoTara;
+           // textBoxVodila.Text =rec.CarDriver;
+            //textBoxAuto.Text =rec.CarName ;
+            //textBoxAutoNumber.Text =rec.CarNumber;
+            foreach(var it in comboBoxGrusoOtpr.Items)
+            {
+                if (((Shipper)it).Code == rec.Shipper)
+                {
+                    comboBoxGrusoOtpr.SelectedItem = it;
+                    break;
+                }
+
+                //textBoxGrusoOtpr.Text = rec.GrusOtprav;
+
+            }
+            //textBoxGrusoOtpr.Text =rec.GrusOtprav;
+            foreach (var it in comboBoxGrusPoluch.Items)
+            {
+                if (((Consignee)it).Code == rec.Consignee)
+                {
+                    comboBoxGrusPoluch.SelectedItem = it;
+                    break;
+                }
+
+                //textBoxGrusoPoluch.Text = rec.GrusPoluch;
+            }
+            //textBoxGrusoPoluch.Text =rec.GrusPoluch;
+
+            textBoxNumberVs.Text =rec.Code.ToString();
+            //textBoxPricep.Text =rec.Pricep;
+            //textBoxPricepNumber.Text =rec.PricepNumber;
+            //textBoxSclad.Text =rec.Sclad;
+            foreach(var it in comboBoxTovar.Items)
+            {
+                if (((Material)it).Code == rec.MaterialFact)
+                {
+                    comboBoxTovar.SelectedItem = it;
+                    break;
+                }
+            }
+            //textBoxTovar.Text=rec.Tovar ;
+            textBoxBrutto.Text = rec.WeightGross.ToString();// = int.Parse(textBoxBrutto.Text);
+            textBoxNetto.Text = rec.NetWeight.ToString();// = int.Parse(textBoxNetto.Text);
             textBoxTara.Text=rec.WeightTara.ToString();// = int.Parse(textBoxTara.Text);
+            
         }
 
-       
-     
-   
+        private void comboBoxAutoNumber_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxAutoNumber.SelectedItem != null)
+            {
+                textBoxAuto.Text = ((Cars)comboBoxAutoNumber.SelectedItem).Carbrand;
+                textBoxPricepNumber.Text = ((Cars)comboBoxAutoNumber.SelectedItem).TrailerNumber;
+                textBoxVodila.Text = ((Cars)comboBoxAutoNumber.SelectedItem).Driver;
+            }
+        }
     }
 }

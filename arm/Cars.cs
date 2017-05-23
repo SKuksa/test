@@ -13,7 +13,7 @@ namespace arm
         [DataMember]
         public Guid Id { get; set; }
         [DataMember]
-        public Guid Code { get; set; }
+        public string Code { get; set; }
         [DataMember]
         public string CarNumber { get; set;}
         [DataMember]
@@ -26,5 +26,9 @@ namespace arm
         public Guid Shipper { get; set; }
         [DataMember]
         public bool isUsed { get; set; }
+        public override string ToString()
+        {
+            return CarNumber;
+        }
     }
 }

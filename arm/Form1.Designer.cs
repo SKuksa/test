@@ -31,11 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBoxSclad = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBoxTovar = new System.Windows.Forms.TextBox();
-            this.textBoxGrusoPoluch = new System.Windows.Forms.TextBox();
-            this.textBoxGrusoOtpr = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -48,7 +43,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxAutorBrutto = new System.Windows.Forms.TextBox();
             this.textBoxAutorTara = new System.Windows.Forms.TextBox();
-            this.textBoxAutor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,7 +58,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxAutoNumber = new System.Windows.Forms.TextBox();
+            this.comboBoxAutoNumber = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxNetto = new System.Windows.Forms.TextBox();
             this.textBoxBrutto = new System.Windows.Forms.TextBox();
@@ -74,6 +68,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.comboBoxAutor = new System.Windows.Forms.ComboBox();
+            this.comboBoxTovar = new System.Windows.Forms.ComboBox();
+            this.comboBoxGrusPoluch = new System.Windows.Forms.ComboBox();
+            this.comboBoxGrusoOtpr = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -121,58 +119,6 @@
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
             // 
-            // textBoxSclad
-            // 
-            this.textBoxSclad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSclad.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxSclad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxSclad.Location = new System.Drawing.Point(599, 106);
-            this.textBoxSclad.Name = "textBoxSclad";
-            this.textBoxSclad.Size = new System.Drawing.Size(151, 29);
-            this.textBoxSclad.TabIndex = 18;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label22.Location = new System.Drawing.Point(537, 108);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 21);
-            this.label22.TabIndex = 17;
-            this.label22.Text = "Склад:";
-            // 
-            // textBoxTovar
-            // 
-            this.textBoxTovar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxTovar.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxTovar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxTovar.Location = new System.Drawing.Point(599, 281);
-            this.textBoxTovar.Name = "textBoxTovar";
-            this.textBoxTovar.Size = new System.Drawing.Size(151, 29);
-            this.textBoxTovar.TabIndex = 16;
-            // 
-            // textBoxGrusoPoluch
-            // 
-            this.textBoxGrusoPoluch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxGrusoPoluch.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxGrusoPoluch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxGrusoPoluch.Location = new System.Drawing.Point(599, 246);
-            this.textBoxGrusoPoluch.Name = "textBoxGrusoPoluch";
-            this.textBoxGrusoPoluch.Size = new System.Drawing.Size(151, 29);
-            this.textBoxGrusoPoluch.TabIndex = 15;
-            // 
-            // textBoxGrusoOtpr
-            // 
-            this.textBoxGrusoOtpr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxGrusoOtpr.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxGrusoOtpr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxGrusoOtpr.Location = new System.Drawing.Point(599, 211);
-            this.textBoxGrusoOtpr.Name = "textBoxGrusoOtpr";
-            this.textBoxGrusoOtpr.Size = new System.Drawing.Size(151, 29);
-            this.textBoxGrusoOtpr.TabIndex = 14;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -218,7 +164,6 @@
             this.textBoxPricepNumber.Name = "textBoxPricepNumber";
             this.textBoxPricepNumber.Size = new System.Drawing.Size(143, 29);
             this.textBoxPricepNumber.TabIndex = 10;
-            this.textBoxPricepNumber.Text = "Номерной знак";
             this.textBoxPricepNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxPricep
@@ -228,6 +173,7 @@
             this.textBoxPricep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.textBoxPricep.Location = new System.Drawing.Point(599, 176);
             this.textBoxPricep.Name = "textBoxPricep";
+            this.textBoxPricep.ReadOnly = true;
             this.textBoxPricep.Size = new System.Drawing.Size(151, 29);
             this.textBoxPricep.TabIndex = 8;
             // 
@@ -250,6 +196,7 @@
             this.textBoxVodila.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.textBoxVodila.Location = new System.Drawing.Point(243, 211);
             this.textBoxVodila.Name = "textBoxVodila";
+            this.textBoxVodila.ReadOnly = true;
             this.textBoxVodila.Size = new System.Drawing.Size(151, 29);
             this.textBoxVodila.TabIndex = 5;
             // 
@@ -269,11 +216,12 @@
             // 
             this.textBoxAuto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAuto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxAuto.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
+            this.textBoxAuto.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxAuto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.textBoxAuto.Location = new System.Drawing.Point(243, 176);
             this.textBoxAuto.Name = "textBoxAuto";
-            this.textBoxAuto.Size = new System.Drawing.Size(151, 29);
+            this.textBoxAuto.ReadOnly = true;
+            this.textBoxAuto.Size = new System.Drawing.Size(151, 35);
             this.textBoxAuto.TabIndex = 1;
             // 
             // label11
@@ -309,16 +257,6 @@
             this.textBoxAutorTara.ReadOnly = true;
             this.textBoxAutorTara.Size = new System.Drawing.Size(251, 29);
             this.textBoxAutorTara.TabIndex = 48;
-            // 
-            // textBoxAutor
-            // 
-            this.textBoxAutor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAutor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxAutor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxAutor.Location = new System.Drawing.Point(591, 660);
-            this.textBoxAutor.Name = "textBoxAutor";
-            this.textBoxAutor.Size = new System.Drawing.Size(251, 29);
-            this.textBoxAutor.TabIndex = 47;
             // 
             // label10
             // 
@@ -488,23 +426,22 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBoxAutoNumber);
+            this.panel1.Controls.Add(this.comboBoxAutoNumber);
             this.panel1.Location = new System.Drawing.Point(190, 421);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(151, 37);
             this.panel1.TabIndex = 52;
             // 
-            // textBoxAutoNumber
+            // comboBoxAutoNumber
             // 
-            this.textBoxAutoNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAutoNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxAutoNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxAutoNumber.Location = new System.Drawing.Point(3, 3);
-            this.textBoxAutoNumber.Name = "textBoxAutoNumber";
-            this.textBoxAutoNumber.Size = new System.Drawing.Size(143, 29);
-            this.textBoxAutoNumber.TabIndex = 5;
-            this.textBoxAutoNumber.Text = "Номерной знак";
-            this.textBoxAutoNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.comboBoxAutoNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAutoNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxAutoNumber.FormattingEnabled = true;
+            this.comboBoxAutoNumber.Location = new System.Drawing.Point(-2, 3);
+            this.comboBoxAutoNumber.Name = "comboBoxAutoNumber";
+            this.comboBoxAutoNumber.Size = new System.Drawing.Size(152, 29);
+            this.comboBoxAutoNumber.TabIndex = 70;
+            this.comboBoxAutoNumber.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoNumber_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -601,6 +538,10 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.comboBoxAutor);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.comboBoxTovar);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.comboBoxGrusPoluch);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.comboBoxGrusoOtpr);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel6);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel5);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel4);
@@ -627,17 +568,11 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.maskedTextBoxDataTara);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.maskedTextBoxDataBrutto);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxSclad);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label8);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.label22);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label9);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxTovar);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label10);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxVodila);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutor);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxGrusoPoluch);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label14);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxGrusoOtpr);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxPricep);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label13);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label11);
@@ -647,7 +582,7 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutorTara);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxAutorBrutto);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pictureBox1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1559, 831);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1584, 831);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -658,6 +593,46 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // comboBoxAutor
+            // 
+            this.comboBoxAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAutor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxAutor.FormattingEnabled = true;
+            this.comboBoxAutor.Location = new System.Drawing.Point(591, 659);
+            this.comboBoxAutor.Name = "comboBoxAutor";
+            this.comboBoxAutor.Size = new System.Drawing.Size(251, 29);
+            this.comboBoxAutor.TabIndex = 71;
+            // 
+            // comboBoxTovar
+            // 
+            this.comboBoxTovar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTovar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxTovar.FormattingEnabled = true;
+            this.comboBoxTovar.Location = new System.Drawing.Point(599, 277);
+            this.comboBoxTovar.Name = "comboBoxTovar";
+            this.comboBoxTovar.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxTovar.TabIndex = 69;
+            // 
+            // comboBoxGrusPoluch
+            // 
+            this.comboBoxGrusPoluch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGrusPoluch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxGrusPoluch.FormattingEnabled = true;
+            this.comboBoxGrusPoluch.Location = new System.Drawing.Point(599, 242);
+            this.comboBoxGrusPoluch.Name = "comboBoxGrusPoluch";
+            this.comboBoxGrusPoluch.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxGrusPoluch.TabIndex = 68;
+            // 
+            // comboBoxGrusoOtpr
+            // 
+            this.comboBoxGrusoOtpr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGrusoOtpr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBoxGrusoOtpr.FormattingEnabled = true;
+            this.comboBoxGrusoOtpr.Location = new System.Drawing.Point(599, 207);
+            this.comboBoxGrusoOtpr.Name = "comboBoxGrusoOtpr";
+            this.comboBoxGrusoOtpr.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxGrusoOtpr.TabIndex = 67;
             // 
             // panel6
             // 
@@ -810,7 +785,6 @@
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(178, 28);
             this.toolStripButtonSave.Text = "Записать и закрыть";
-            this.toolStripButtonSave.Click += this.buttonSave_Click;
             // 
             // Form1
             // 
@@ -826,7 +800,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -851,11 +824,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBoxSclad;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBoxTovar;
-        private System.Windows.Forms.TextBox textBoxGrusoPoluch;
-        private System.Windows.Forms.TextBox textBoxGrusoOtpr;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
@@ -868,7 +836,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxAutorBrutto;
         private System.Windows.Forms.TextBox textBoxAutorTara;
-        private System.Windows.Forms.TextBox textBoxAutor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -884,7 +851,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBoxAutoNumber;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBoxNetto;
         private System.Windows.Forms.TextBox textBoxBrutto;
@@ -911,6 +877,11 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ComboBox comboBoxTovar;
+        private System.Windows.Forms.ComboBox comboBoxGrusPoluch;
+        private System.Windows.Forms.ComboBox comboBoxGrusoOtpr;
+        private System.Windows.Forms.ComboBox comboBoxAutor;
+        private System.Windows.Forms.ComboBox comboBoxAutoNumber;
     }
 }
 

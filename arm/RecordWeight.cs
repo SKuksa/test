@@ -7,86 +7,140 @@ using System.Text;
 namespace arm
 {
     [DataContract]
+    public class File
+    {
+        public string Code { get; set;}
+        public string Name { get; set; }
+        public byte[] Byte { get; set; }
+    }
+
+    [DataContract]
     public class RecordWeight
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public string Regim { get; set; }
+        public string MaterialFact { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public DateTime dataTara { get; set; }
+        public File  Files{ get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public DateTime dataBrutto { get; set; }
+        public string Consignee { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string Autotruck { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string Shipper { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string WeighingMode { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public bool isCompleted { get; set; }
+  
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public DateTime DateTare{ get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public DateTime DateGross { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
         public int WeightTara { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public int WeightBrutto { get; set; }
+        public int WeightGross { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public int WeightNetto { get; set; }
+        public int NetWeight { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public int Number { get; set; }
-        public string Autor { get; set; }
+        public int Code { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public string AutoTara { get; set; }
+        public string WeighmanTare{ get; set; }//весовщик тара
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember]
-        public string AutoBrutto { get; set; }
-        [DataMember]
-        public string CarName { get; set; }
-        [DataMember]
-        public string CarNumber { get; set; }
-        [DataMember]
-        public string CarDriver { get; set; }
-        [DataMember]
-        public string Pricep { get; set; }
-        [DataMember]
-        public string PricepNumber { get; set; }
-        [DataMember]
-        public string GrusOtprav { get; set; }
-        [DataMember]
-        public string GrusPoluch { get; set; }
-        [DataMember]
-        public string Tovar { get; set; }
-        [DataMember]
-        public string Sclad { get; set; }
+        public string WeighmanGross { get; set; }//весовщик тара
+     
         public RecordWeight()
         {
-            dataTara = DateTime.MinValue;
-            dataBrutto = DateTime.MinValue;
-            WeightTara = 0;
-            WeightBrutto = 0;
-            WeightNetto = 0;
-            Number = 0;
-            Autor = string.Empty;
-            AutoTara = string.Empty;
-            AutoBrutto = string.Empty;
-            CarName = string.Empty;
-            CarNumber = string.Empty;
-            CarDriver = string.Empty;
-            Pricep = string.Empty;
-            PricepNumber = string.Empty;
-            GrusOtprav = string.Empty;
-            GrusPoluch = string.Empty;
-            Tovar = string.Empty;
-            Sclad = string.Empty;
-        }
+            DateTare = DateTime.MinValue;
+            DateGross = DateTime.MinValue;
+
+
+            MaterialFact = string.Empty;
+            //Files;
+            Consignee = string.Empty;
+            Autotruck = string.Empty;
+            Shipper = string.Empty;
+            WeighingMode = string.Empty;
+            isCompleted=false;
+
+            DateTare=DateTime.MinValue;
+            DateGross = DateTime.MinValue;
+            WeightTara = 0; ;
+            WeightGross = 0; ;
+            NetWeight = 0; ;
+            Code =0;
+            WeighmanTare = string.Empty;//весовщик тара
+            WeighmanGross = string.Empty; //весовщик тара
+
+
+    }
         public RecordWeight(int Num)
         {
-            dataTara = DateTime.MinValue;
-            dataBrutto = DateTime.MinValue;
-            WeightTara = 0;
-            WeightBrutto = 0;
-            WeightNetto = 0;
-            Number = Num;
-            Autor = string.Empty;
-            AutoTara = string.Empty;
-            AutoBrutto = string.Empty;
-            CarName = string.Empty;
-            CarNumber = string.Empty;
-            CarDriver = string.Empty;
-            Pricep = string.Empty;
-            PricepNumber = string.Empty;
-            GrusOtprav = string.Empty;
-            GrusPoluch = string.Empty;
-            Tovar = string.Empty;
-            Sclad = string.Empty;
+            DateTare = DateTime.MinValue;
+            DateGross = DateTime.MinValue;
+
+
+            MaterialFact = string.Empty;
+            //Files;
+            Consignee = string.Empty;
+            Autotruck = string.Empty;
+            Shipper = string.Empty;
+            WeighingMode = string.Empty;
+            isCompleted = false;
+
+            DateTare = DateTime.MinValue;
+            DateGross = DateTime.MinValue;
+            WeightTara = 0; ;
+            WeightGross = 0; ;
+            NetWeight = 0; ;
+            Code = Num;
+            WeighmanTare = string.Empty;//весовщик тара
+            WeighmanGross = string.Empty; //весовщик тара
         }
     }
 }

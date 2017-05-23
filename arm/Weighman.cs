@@ -17,5 +17,9 @@ namespace arm
         public string Name { get; set;}
         [DataMember]
         public bool isUsed { get; set;}
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

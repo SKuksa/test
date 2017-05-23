@@ -17,9 +17,10 @@ namespace arm
     {
         //int LastNumber;
         List<RecordWeight> listWeight;
-        /// <summary>
-        /// Автомобили
-        /// </summary>
+        static public List<Material> listMaterial;
+         /// <summary>
+            /// Автомобили
+            /// </summary>
         static public List<Cars> listCars;
         /// <summary>
         /// Грузоотправитель
@@ -59,7 +60,7 @@ namespace arm
                         AddItem(tt);
                     else
                     {
-                        if (tt.dataBrutto == DateTime.MinValue || tt.dataTara == DateTime.MinValue)
+                        if (tt.DateGross == DateTime.MinValue || tt.DateTare == DateTime.MinValue)
                             AddItem(tt);
                     }
             }
@@ -81,7 +82,7 @@ namespace arm
                         AddItem(tt);
                     else
                     {
-                        if (tt.dataBrutto == DateTime.MinValue || tt.dataTara == DateTime.MinValue)
+                        if (tt.DateGross == DateTime.MinValue || tt.DateTare == DateTime.MinValue)
                             AddItem(tt);
                     }
             }
@@ -91,14 +92,14 @@ namespace arm
         {
             string fileMaNum =Path.Combine(Properties.Settings.Default.PathDB, "numberdb.txt");
             int Numbercr = 0;
-            if (File.Exists(fileMaNum))
-                Numbercr = BitConverter.ToInt32(File.ReadAllBytes(fileMaNum), 0);
+            if (System.IO.File.Exists(fileMaNum))
+                Numbercr = BitConverter.ToInt32(System.IO.File.ReadAllBytes(fileMaNum), 0);
 
             Form1 frm = new Form1(new RecordWeight(Numbercr++));
             if (frm.ShowDialog() == DialogResult.OK)
             {
 
-                File.WriteAllBytes(fileMaNum, BitConverter.GetBytes(Numbercr));
+                System.IO.File.WriteAllBytes(fileMaNum, BitConverter.GetBytes(Numbercr));
 
                 lock (listWeight)
                 {
@@ -109,18 +110,18 @@ namespace arm
                     AddItem(frm.rec);
                 else
                 {
-                    if(frm.rec.dataBrutto==DateTime.MinValue || frm.rec.dataTara==DateTime.MinValue)
+                    if(frm.rec.DateGross==DateTime.MinValue || frm.rec.DateTare==DateTime.MinValue)
                         AddItem(frm.rec);
                 }
             }
         }
         void AddItem(RecordWeight it)
         {
-            if (it.dataBrutto == DateTime.MinValue && it.dataTara == DateTime.MinValue)
+            if (it.DateGross == DateTime.MinValue && it.DateTare == DateTime.MinValue)
                 return;
-            var arrstr = new[] { it.Number.ToString("D9"),
-                                 it.dataBrutto>it.dataTara? it.dataBrutto.ToString("dd MM yyyy HH:mm:ss"): it.dataTara.ToString("dd MM yyyy HH:mm:ss"),
-                                 it.Autor,
+            var arrstr = new[] { it.Code.ToString("D9"),
+                                 it.DateGross>it.DateTare? it.DateGross.ToString("dd MM yyyy HH:mm:ss"): it.DateTare.ToString("dd MM yyyy HH:mm:ss"),
+                                 /*it.Autor,
                                  it.Regim,
                                  it.Tovar,
                                  it.WeightBrutto.ToString(),
@@ -128,7 +129,7 @@ namespace arm
                                  it.WeightTara.ToString(),
                                  it.CarName,
                                  it.CarNumber,
-                                 it.dataBrutto!=DateTime.MinValue && it.dataTara!=DateTime.MinValue? "ДА":"НЕТ" };
+                                 it.dataBrutto!=DateTime.MinValue && it.dataTara!=DateTime.MinValue? "ДА":"НЕТ" */};
             ListViewItem item = new ListViewItem(arrstr);
             item.Tag = it;
             listViewOperation.Items.Add(item);
@@ -143,6 +144,13 @@ namespace arm
                 else
                     listCars = ((Cars[])tmp).ToList();
 
+                tmp = LoadJsonDB(typeof(Material[]), Path.Combine(Properties.Settings.Default.PathDB, "listMaterial.txt"));
+                if (tmp == null)
+                    listMaterial = new List<Material>();
+                else
+                    listMaterial = ((Material[])tmp).ToList();
+
+
                 tmp = LoadJsonDB(typeof(Shipper[]), Path.Combine(Properties.Settings.Default.PathDB, "listShipper.txt"));
                 if (tmp != null)
                     listShipper = ((Shipper[])tmp).ToList();
@@ -155,22 +163,23 @@ namespace arm
                 else
                     listConsignee = new List<Consignee>();
 
-                tmp = LoadJsonDB(typeof(WeighingMode[]), Path.Combine(Properties.Settings.Default.PathDB, "WeighingMode.txt"));
+                tmp = LoadJsonDB(typeof(WeighingMode[]), Path.Combine(Properties.Settings.Default.PathDB, "listWeighingMode.txt"));
                 if (tmp != null)
                     listWeighingMode = ((WeighingMode[])tmp).ToList();
                 else
                     listWeighingMode = new List<WeighingMode>();
+               
 
-                tmp = LoadJsonDB(typeof(Weighman[]), Path.Combine(Properties.Settings.Default.PathDB, "Weighman.txt"));
+                tmp = LoadJsonDB(typeof(Weighman[]), Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
                 if (tmp != null)
-                    tmp = ((Weighman[])tmp).ToList();
+                    listWeighman = ((Weighman[])tmp).ToList();
                 else
                     listWeighman = new List<Weighman>(); 
 
 
 
                 string filename = Path.Combine(Properties.Settings.Default.PathDB, "RecordWeight.txt");
-                if (File.Exists(filename))
+                if (System.IO.File.Exists(filename))
                 {
                     var fs = new FileStream(filename, FileMode.Open);
                     var reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
@@ -187,7 +196,7 @@ namespace arm
                             AddItem(tt);
                         else
                         {
-                            if (tt.dataBrutto == DateTime.MinValue || tt.dataTara == DateTime.MinValue)
+                            if (tt.DateGross == DateTime.MinValue || tt.DateTare == DateTime.MinValue)
                                 AddItem(tt);
                         }
                 }
@@ -223,7 +232,7 @@ namespace arm
             {
                 ///MemoryStream stream1 = new MemoryStream();
                 ///
-                var strFile = File.Create(FileName);
+                var strFile = System.IO.File.Create(FileName);
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(tp, new DataContractJsonSerializerSettings
                 {
                     DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
@@ -235,7 +244,7 @@ namespace arm
         }
         static private object LoadJsonDB(Type tp, string FileName)
         {
-            if (!File.Exists(FileName))
+            if (!System.IO.File.Exists(FileName))
                 return null;
             DataContractJsonSerializer ser = new DataContractJsonSerializer(tp, new DataContractJsonSerializerSettings
             {
@@ -279,7 +288,7 @@ namespace arm
             }
             rec = rec.Where(x =>
             {
-                var date = x.dataBrutto > x.dataTara ? x.dataBrutto : x.dataTara;
+                var date = x.DateGross > x.DateTare ? x.DateGross : x.DateTare;
                 return date >= Start && date <= End;
             }).ToArray();
             ser.WriteObject(stream1, rec);
@@ -303,6 +312,62 @@ namespace arm
             }
 
         }
+
+        void WebMaterial(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
+        {
+            MemoryStream stream1 = new MemoryStream();
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Material[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+
+            System.IO.Stream strem = request.InputStream;
+            int ln = (int)request.ContentLength64;
+            var rdr = new StreamReader(stream1, Encoding.UTF8);
+            byte[] buf = new byte[ln];
+
+            strem.Read(buf, 0, ln);
+            stream1.Write(buf, 0, ln);
+            stream1.Position = 0;
+            var obj = ser.ReadObject(stream1);
+
+            lock (listMaterial)
+            {
+                listMaterial = ((Material[])obj).ToList();
+                SaveJsonDB(typeof(Material[]), listMaterial.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listMaterial.txt"));
+            }
+
+            var rs = listMaterial.Select(x =>
+            {
+                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+            }).ToArray();
+            ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
+            {
+                DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
+            });
+            stream1 = new MemoryStream();
+            rdr = new StreamReader(stream1, Encoding.UTF8);
+            ser.WriteObject(stream1, rs);
+            stream1.Position = 0;
+            var ret = rdr.ReadToEnd();
+            rdr.Close();
+            stream1.Close();
+            {
+                {
+                    System.Net.HttpListenerResponse response = context.Response;
+                    response.ContentType = "application/json";
+
+                    string responseString = ret;
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                    response.ContentLength64 = buffer.Length;
+                    Stream output = response.OutputStream;
+                    output.Write(buffer, 0, buffer.Length);
+                    output.Close();
+                }
+            }
+        }
+
         void WebCars(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
         {
             MemoryStream stream1 = new MemoryStream();
@@ -324,7 +389,7 @@ namespace arm
             lock (listCars)
             {
                 listCars = ((Cars[])obj).ToList();
-                SaveJsonDB(typeof(Cars[]), listCars, Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
+                SaveJsonDB(typeof(Cars[]), listCars.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
             }
 
             var rs = listCars.Select(x =>
@@ -377,7 +442,7 @@ namespace arm
             lock (listShipper)
             {
                 listShipper = ((Shipper[])obj).ToList();
-                SaveJsonDB(typeof(Shipper[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listShipper.txt"));
+                SaveJsonDB(typeof(Shipper[]), listShipper.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listShipper.txt"));
             }
 
             var rs = listShipper.Select(x =>
@@ -430,7 +495,7 @@ namespace arm
             lock (listConsignee)
             {
                 listConsignee = ((Consignee[])obj).ToList();
-                SaveJsonDB(typeof(Consignee[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listConsignee.txt"));
+                SaveJsonDB(typeof(Consignee[]), listConsignee.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listConsignee.txt"));
             }
 
             var rs = listConsignee.Select(x =>
@@ -483,7 +548,7 @@ namespace arm
             lock (listWeighman)
             {
                 listWeighman = ((Weighman[])obj).ToList();
-                SaveJsonDB(typeof(Weighman[]), listConsignee, Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
+                SaveJsonDB(typeof(Weighman[]), listWeighman.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
             }
 
             var rs = listWeighman.Select(x =>
@@ -589,6 +654,9 @@ namespace arm
                                     break;
                                 case "/WEIGHINGMODE":
                                     WebWeighingMode(str, context);
+                                    break;
+                                case "/MATERIAL":
+                                    WebMaterial(str, request, context);
                                     break;
                             }
                             /*

@@ -219,15 +219,15 @@
                             lock (listWeight)
                             {
                                 for (int j = 0; j < listWeight.Count; j++)
-                                    if (listWeight[j].Number == frm.rec.Number)
+                                    if (listWeight[j].Code == frm.rec.Code)
                                         listWeight[j] = frm.rec;
                             }
 
                             listViewOperation.Items[i].Tag = frm.rec;
 
-                            listViewOperation.Items[i].SubItems[0].Text = frm.rec.Number.ToString("D9");
-                            listViewOperation.Items[i].SubItems[1].Text = frm.rec.dataBrutto > frm.rec.dataTara ? frm.rec.dataBrutto.ToString("dd MM yyyy HH:mm:ss") : frm.rec.dataTara.ToString("dd MM yyyy HH:mm:ss");
-                            listViewOperation.Items[i].SubItems[2].Text = frm.rec.Autor;
+                            listViewOperation.Items[i].SubItems[0].Text = frm.rec.Code.ToString("D9");
+                            listViewOperation.Items[i].SubItems[1].Text = frm.rec.DateGross > frm.rec.DateTare ? frm.rec.DateGross.ToString("dd MM yyyy HH:mm:ss") : frm.rec.DateTare.ToString("dd MM yyyy HH:mm:ss");
+                            /*listViewOperation.Items[i].SubItems[2].Text = frm.rec.Autor;
                             listViewOperation.Items[i].SubItems[3].Text = frm.rec.Regim;
                             listViewOperation.Items[i].SubItems[4].Text = frm.rec.Tovar;
                             listViewOperation.Items[i].SubItems[5].Text = frm.rec.WeightBrutto.ToString();
@@ -235,11 +235,11 @@
                             listViewOperation.Items[i].SubItems[7].Text = frm.rec.WeightTara.ToString();
                             listViewOperation.Items[i].SubItems[8].Text = frm.rec.CarName;
                             listViewOperation.Items[i].SubItems[9].Text = frm.rec.CarNumber;
-                            listViewOperation.Items[i].SubItems[10].Text = frm.rec.dataBrutto != System.DateTime.MinValue && frm.rec.dataTara != System.DateTime.MinValue ? "ДА" : "НЕТ";
+                            listViewOperation.Items[i].SubItems[10].Text = frm.rec.DateGross != System.DateTime.MinValue && frm.rec.DateTare != System.DateTime.MinValue ? "ДА" : "НЕТ";*/
 
                             if (buttonAll.FlatStyle != System.Windows.Forms.FlatStyle.Popup)
                             {
-                                if (frm.rec.dataBrutto != System.DateTime.MinValue && frm.rec.dataTara != System.DateTime.MinValue)
+                                if (frm.rec.DateGross != System.DateTime.MinValue && frm.rec.DateTare != System.DateTime.MinValue)
                                     listViewOperation.Items.RemoveAt(i);
                                 ;
                             }
