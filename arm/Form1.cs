@@ -14,16 +14,16 @@ namespace arm
         public Form1()
         {
             InitializeComponent();
-            rec = new RecordWeight();
+            rec = new Weighing();
         }
-        public Form1(RecordWeight _rec)
+        public Form1(Weighing _rec)
         {
             InitializeComponent();
             rec = _rec;
             Init();
         }
 
-        public RecordWeight rec;
+        public Weighing rec;
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -80,6 +80,13 @@ namespace arm
                 MessageBox.Show("Не задан вес тары");
                 return;
             }
+            if(comboBoxAutor.SelectedItem==null)
+            {
+                MessageBox.Show("Не задан весовщик");
+                return;
+            }
+
+
 
             maskedTextBoxDataTara.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
             maskedTextBoxDataTara.Tag = DateTime.Now;
@@ -87,6 +94,7 @@ namespace arm
             textBoxTara.Text = textWeight.Text;
             //comboBoxAutor.SelectedItem
             textBoxAutorTara.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString(); ; //textBoxAutor.Text;
+            textBoxAutorTara.Tag = comboBoxAutor.SelectedItem;
 
             if (!AsNettoBrutto())
             {
@@ -120,6 +128,11 @@ namespace arm
         }
         private void buttonBrutto_Click(object sender, EventArgs e)
         {
+            if (comboBoxAutor.SelectedItem == null)
+            {
+                MessageBox.Show("Не задан весовщик");
+                return;
+            }
             if (AsNettoBrutto())
             {
                 if (maskedTextBoxDataTara.Tag == null)
@@ -141,6 +154,7 @@ namespace arm
             maskedTextBoxDataBrutto.Tag = DateTime.Now;
             textBoxBrutto.Text = textWeight.Text;
             textBoxAutorBrutto.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString();
+            textBoxAutorBrutto.Tag = comboBoxAutor.SelectedItem;
                 ;// textBoxAutor.Text;
 
             if (AsNettoBrutto())
@@ -167,35 +181,84 @@ namespace arm
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-           
+
+            if (comboBoxAutoNumber.SelectedItem == null)
+            {
+                MessageBox.Show("Не задан автомобиль");
+                return;
+            }
+            if (comboBoxGrusPoluch.SelectedItem == null)
+            {
+                MessageBox.Show("Не задан получатель");
+                return;
+            }
+            if (comboBoxTovar.SelectedItem == null)
+            {
+                MessageBox.Show("Не задан товар");
+                return;
+            }
+            if (comboBoxGrusoOtpr.SelectedItem == null)
+            {
+                MessageBox.Show("Не задан отправитель");
+                return;
+            }
+
+
             DialogResult = DialogResult.OK;
-             /*rec.AutoBrutto = textBoxAutorBrutto.Text;
-            rec.Autor = textBoxAutor.Text;
-            rec.AutoTara = textBoxAutorTara.Text;
-            rec.CarDriver = textBoxVodila.Text;
-            rec.CarName = textBoxAuto.Text;
-            rec.CarNumber = textBoxAutoNumber.Text;
+
+
+            rec.Autotruck = ((Autotruck)(comboBoxAutoNumber.SelectedItem)).Code;
+            rec.Consignee = ((Consignee)(comboBoxGrusPoluch.SelectedItem)).Code;
+            rec.Shipper = ((Shipper)(comboBoxGrusoOtpr.SelectedItem)).Code;
+            rec.MaterialFact = ((Material)(comboBoxTovar.SelectedItem)).Code;
+            rec.NetWeight = int.Parse(textBoxNetto.Text);
+            rec.WeightGross = int.Parse(textBoxBrutto.Text);
+            rec.WeightTara = int.Parse(textBoxTara.Text);
+
             if (maskedTextBoxDataBrutto.Tag != null)
-                rec.dataBrutto = (DateTime)maskedTextBoxDataBrutto.Tag;
+                rec.DateGross = (DateTime)maskedTextBoxDataBrutto.Tag;
             else
-                rec.dataBrutto = DateTime.MinValue;
+                rec.DateGross = DateTime.MinValue;
 
             if (maskedTextBoxDataTara.Tag != null)
-                rec.dataTara = (DateTime)maskedTextBoxDataTara.Tag;
+                rec.DateTare = (DateTime)maskedTextBoxDataTara.Tag;
             else
-                rec.dataTara = DateTime.MinValue;
+                rec.DateTare = DateTime.MinValue;
+            if(textBoxAutorTara.Tag!=null)
+                rec.WeighmanTare = ((Weighman)(textBoxAutorTara.Tag)).Code;
+            if(textBoxAutorBrutto.Tag!=null)
+                rec.WeighmanGross = ((Weighman)(textBoxAutorBrutto.Tag)).Code;
 
-            rec.GrusOtprav = textBoxGrusoOtpr.Text;
-            rec.GrusPoluch = textBoxGrusoPoluch.Text;
-            rec.Number = int.Parse(textBoxNumberVs.Text);
-            rec.Pricep = textBoxPricep.Text;
-            rec.PricepNumber = textBoxPricepNumber.Text;
-            rec.Sclad = textBoxSclad.Text;
-            rec.Tovar = textBoxTovar.Text;
-            rec.WeightBrutto = int.Parse(textBoxBrutto.Text);
-            rec.WeightNetto = int.Parse(textBoxNetto.Text);
-            rec.WeightTara = int.Parse(textBoxTara.Text);
-            rec.Regim = (string)comboBox1.SelectedItem;*/
+            //textBoxAutorBrutto.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString();
+            //textBoxAutorTara.Text = ((Weighman)comboBoxAutor.SelectedItem).ToString();
+            //textBoxAutorTara.Tag =
+            /*rec.AutoBrutto = textBoxAutorBrutto.Text;
+           rec.Autor = textBoxAutor.Text;
+           rec.AutoTara = textBoxAutorTara.Text;
+           rec.CarDriver = textBoxVodila.Text;
+           rec.CarName = textBoxAuto.Text;
+           rec.CarNumber = textBoxAutoNumber.Text;
+           if (maskedTextBoxDataBrutto.Tag != null)
+               rec.dataBrutto = (DateTime)maskedTextBoxDataBrutto.Tag;
+           else
+               rec.dataBrutto = DateTime.MinValue;
+
+           if (maskedTextBoxDataTara.Tag != null)
+               rec.dataTara = (DateTime)maskedTextBoxDataTara.Tag;
+           else
+               rec.dataTara = DateTime.MinValue;
+
+           rec.GrusOtprav = textBoxGrusoOtpr.Text;
+           rec.GrusPoluch = textBoxGrusoPoluch.Text;
+           rec.Number = int.Parse(textBoxNumberVs.Text);
+           rec.Pricep = textBoxPricep.Text;
+           rec.PricepNumber = textBoxPricepNumber.Text;
+           rec.Sclad = textBoxSclad.Text;
+           rec.Tovar = textBoxTovar.Text;
+           rec.WeightBrutto = int.Parse(textBoxBrutto.Text);
+           rec.WeightNetto = int.Parse(textBoxNetto.Text);
+           rec.WeightTara = int.Parse(textBoxTara.Text);
+           rec.Regim = (string)comboBox1.SelectedItem;*/
             Close();
         }
         void Init()
@@ -294,7 +357,6 @@ namespace arm
                 comboBoxGrusPoluch.Enabled = false;
 
                 textBoxNumberVs.Enabled = false;
-                textBoxPricep.Enabled = false;
                 textBoxPricepNumber.Enabled = false;
                 //textBoxSclad.Enabled = false;
                 //textBoxTovar.Enabled = false;
@@ -303,11 +365,12 @@ namespace arm
                 textBoxNetto.Enabled = false;
                 textBoxTara.Enabled = false;
                 comboBox1.Enabled = false;
-                if (rec.WeighingMode == (string)comboBox1.SelectedItem)
-                    if (comboBox1.SelectedIndex == 0)
+                if (rec.WeighingMode== EWeighingMode.Cross_Tare)//  == (string)comboBox1.SelectedItem)
+                    comboBox1.SelectedIndex = 1;
+                /*if (comboBox1.SelectedIndex == 0)
                         comboBox1.SelectedIndex = 1;
                      else
-                        comboBox1.SelectedIndex = 0;
+                        comboBox1.SelectedIndex = 0;*/
 
             }
 
@@ -316,26 +379,28 @@ namespace arm
             textBoxAutorBrutto.Enabled = false;
 
 
-
-            foreach (var it in comboBoxAutor.Items)
+      
+            foreach (var it in MainFrm.ArhlistWeighman)
             {
                 if (((Weighman)it).Code == rec.WeighmanGross)
+                {
                     textBoxAutorBrutto.Text = ((Weighman)it).Name;
+                    textBoxAutorBrutto.Tag = it;
+                }
                 if (((Weighman)it).Code == rec.WeighmanTare)
+                {
                     textBoxAutorTara.Text = ((Weighman)it).Name;
+                    textBoxAutorTara.Tag = it;
+                }
 
-
-                //textBoxAutorTara.Text = rec.AutoTara;
-
-                //textBoxAutorBrutto.Text = rec.WeighmanGross;// .AutoBrutto;
             }
             foreach (var it in comboBoxAutoNumber.Items)
             {
-                if (((Cars)it).Code == rec.Autotruck)
+                if (((Autotruck)it).Code == rec.Autotruck)
                 {
-                    textBoxVodila.Text = ((Cars)it).Driver;
-                    textBoxAuto.Text = ((Cars)it).Carbrand;
-                    textBoxPricepNumber.Text = ((Cars)it).TrailerNumber;
+                    textBoxVodila.Text = ((Autotruck)it).Driver;
+                    textBoxAuto.Text = ((Autotruck)it).Carbrand;
+                    textBoxPricepNumber.Text = ((Autotruck)it).TrailerNumber;
                     comboBoxAutoNumber.SelectedItem = it;
                     break;
                 }
@@ -397,9 +462,9 @@ namespace arm
         {
             if (comboBoxAutoNumber.SelectedItem != null)
             {
-                textBoxAuto.Text = ((Cars)comboBoxAutoNumber.SelectedItem).Carbrand;
-                textBoxPricepNumber.Text = ((Cars)comboBoxAutoNumber.SelectedItem).TrailerNumber;
-                textBoxVodila.Text = ((Cars)comboBoxAutoNumber.SelectedItem).Driver;
+                textBoxAuto.Text = ((Autotruck)comboBoxAutoNumber.SelectedItem).Carbrand;
+                textBoxPricepNumber.Text = ((Autotruck)comboBoxAutoNumber.SelectedItem).TrailerNumber;
+                textBoxVodila.Text = ((Autotruck)comboBoxAutoNumber.SelectedItem).Driver;
             }
         }
     }

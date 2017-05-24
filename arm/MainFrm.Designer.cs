@@ -213,7 +213,7 @@
                 {
                     if (listViewOperation.Items[i].Tag != null)
                     {
-                        Form1 frm = new Form1(((RecordWeight)(listViewOperation.Items[i].Tag)));
+                        Form1 frm = new Form1(((Weighing)(listViewOperation.Items[i].Tag)));
                         if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             lock (listWeight)

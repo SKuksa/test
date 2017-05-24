@@ -9,92 +9,91 @@ namespace arm
     [DataContract]
     public class File
     {
+        [DataMember]
         public string Code { get; set;}
+        [DataMember]
         public string Name { get; set; }
+        [DataMember]
+        public string BlobFilePath { get; set; }
+        [DataMember]
         public byte[] Byte { get; set; }
+
     }
 
     [DataContract]
-    public class RecordWeight
+    public class Weighing
     {
-        /// <summary>
-        /// 
-        /// </summary>
+     
         [DataMember]
         public string MaterialFact { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
-        public File  Files{ get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        public File[]  Files{ get; set; }
+       
         [DataMember]
         public string Consignee { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
         public string Autotruck { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+       
         [DataMember]
         public string Shipper { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
-        public string WeighingMode { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        public EWeighingMode WeighingMode { get
+            {
+
+                if (DateGross == null)
+                    return EWeighingMode.Cross_Tare;
+                if (DateTare == null)
+                    return EWeighingMode.Cross_Tare;
+                if(DateGross==DateTime.MinValue && DateTare == DateTime.MinValue)
+                    return EWeighingMode.Cross_Tare;
+
+                if (DateGross >DateTare)
+                    return EWeighingMode.Tare_Gross;
+                else
+                    return EWeighingMode.Cross_Tare;
+            } set { }
+        }
+        
         [DataMember]
-        public bool isCompleted { get; set; }
+        public bool isCompleted { get
+            {
+
+                if (DateGross != null && DateGross != DateTime.MinValue && DateTare != null && DateTare != DateTime.MinValue)
+                    return true;
+                else
+                    return false;
+
+            }set { } }
   
-        /// <summary>
-        /// 
-        /// </summary>
+       
         [DataMember]
         public DateTime DateTare{ get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
         public DateTime DateGross { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
         public int WeightTara { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+       
         [DataMember]
         public int WeightGross { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
         public int NetWeight { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+      
         [DataMember]
         public int Code { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
+       
         [DataMember]
         public string WeighmanTare{ get; set; }//весовщик тара
-        /// <summary>
-        /// 
-        /// </summary>
+        
         [DataMember]
         public string WeighmanGross { get; set; }//весовщик тара
      
-        public RecordWeight()
+        public Weighing()
         {
             DateTare = DateTime.MinValue;
             DateGross = DateTime.MinValue;
@@ -105,7 +104,7 @@ namespace arm
             Consignee = string.Empty;
             Autotruck = string.Empty;
             Shipper = string.Empty;
-            WeighingMode = string.Empty;
+            WeighingMode =  EWeighingMode.Cross_Tare;
             isCompleted=false;
 
             DateTare=DateTime.MinValue;
@@ -119,7 +118,7 @@ namespace arm
 
 
     }
-        public RecordWeight(int Num)
+        public Weighing(int Num)
         {
             DateTare = DateTime.MinValue;
             DateGross = DateTime.MinValue;
@@ -130,7 +129,7 @@ namespace arm
             Consignee = string.Empty;
             Autotruck = string.Empty;
             Shipper = string.Empty;
-            WeighingMode = string.Empty;
+            WeighingMode =  EWeighingMode.Cross_Tare;
             isCompleted = false;
 
             DateTare = DateTime.MinValue;

@@ -7,18 +7,19 @@ using System.Runtime.Serialization;
 
 namespace arm
 {
+    public enum EWeighingMode
+    {
+        GrossAndTare,
+        Cross_Tare,
+        Mixed,
+        Tare_Gross,
+        OnlyGross
+    }
     [DataContract]
     public class WeighingMode
     {
         [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        public string Code { get; set; }
-        [DataMember]
-        public string Name { get; set;}
-        public override string ToString()
-        {
-            return Name;
-        }
+        public EWeighingMode Mode { get; set; }
+
     }
 }

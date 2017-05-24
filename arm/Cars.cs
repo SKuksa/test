@@ -8,14 +8,14 @@ using System.Runtime.Serialization;
 namespace arm
 {
     [DataContract]
-    public class Cars
+    public class Autotruck
     {
         [DataMember]
         public Guid Id { get; set; }
         [DataMember]
         public string Code { get; set; }
         [DataMember]
-        public string CarNumber { get; set;}
+        public string CarNumber { get; set; }
         [DataMember]
         public string TrailerNumber { get; set; }
         [DataMember]

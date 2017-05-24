@@ -35,8 +35,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBoxPricepNumber = new System.Windows.Forms.TextBox();
-            this.textBoxPricep = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.textBoxVodila = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAuto = new System.Windows.Forms.TextBox();
@@ -165,29 +163,6 @@
             this.textBoxPricepNumber.Size = new System.Drawing.Size(143, 29);
             this.textBoxPricepNumber.TabIndex = 10;
             this.textBoxPricepNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxPricep
-            // 
-            this.textBoxPricep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPricep.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.textBoxPricep.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.textBoxPricep.Location = new System.Drawing.Point(599, 176);
-            this.textBoxPricep.Name = "textBoxPricep";
-            this.textBoxPricep.ReadOnly = true;
-            this.textBoxPricep.Size = new System.Drawing.Size(151, 29);
-            this.textBoxPricep.TabIndex = 8;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.label14.Location = new System.Drawing.Point(524, 178);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 21);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Прицеп:";
             // 
             // textBoxVodila
             // 
@@ -373,7 +348,8 @@
             this.buttonBrutto.TabIndex = 37;
             this.buttonBrutto.Text = "Взвесить";
             this.buttonBrutto.UseVisualStyleBackColor = false;
-            // 
+            this.buttonBrutto.Click += this.buttonBrutto_Click;
+
             // textWeight
             // 
             this.textWeight.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
@@ -572,8 +548,6 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label9);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label10);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxVodila);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.label14);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.textBoxPricep);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label13);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label11);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label17);
@@ -611,7 +585,7 @@
             this.comboBoxTovar.FormattingEnabled = true;
             this.comboBoxTovar.Location = new System.Drawing.Point(599, 277);
             this.comboBoxTovar.Name = "comboBoxTovar";
-            this.comboBoxTovar.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxTovar.Size = new System.Drawing.Size(218, 29);
             this.comboBoxTovar.TabIndex = 69;
             // 
             // comboBoxGrusPoluch
@@ -621,7 +595,7 @@
             this.comboBoxGrusPoluch.FormattingEnabled = true;
             this.comboBoxGrusPoluch.Location = new System.Drawing.Point(599, 242);
             this.comboBoxGrusPoluch.Name = "comboBoxGrusPoluch";
-            this.comboBoxGrusPoluch.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxGrusPoluch.Size = new System.Drawing.Size(218, 29);
             this.comboBoxGrusPoluch.TabIndex = 68;
             // 
             // comboBoxGrusoOtpr
@@ -631,7 +605,7 @@
             this.comboBoxGrusoOtpr.FormattingEnabled = true;
             this.comboBoxGrusoOtpr.Location = new System.Drawing.Point(599, 207);
             this.comboBoxGrusoOtpr.Name = "comboBoxGrusoOtpr";
-            this.comboBoxGrusoOtpr.Size = new System.Drawing.Size(151, 29);
+            this.comboBoxGrusoOtpr.Size = new System.Drawing.Size(218, 29);
             this.comboBoxGrusoOtpr.TabIndex = 67;
             // 
             // panel6
@@ -785,6 +759,7 @@
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(178, 28);
             this.toolStripButtonSave.Text = "Записать и закрыть";
+            this.toolStripButtonSave.Click += this.buttonSave_Click;
             // 
             // Form1
             // 
@@ -828,8 +803,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxPricepNumber;
-        private System.Windows.Forms.TextBox textBoxPricep;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBoxVodila;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxAuto;

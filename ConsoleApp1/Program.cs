@@ -26,18 +26,21 @@ namespace ConsoleApp1
             return Name;
         }
     }
+    public enum EWeighingMode
+    {
+        GrossAndTare,
+        Cross_Tare,
+        Mixed,
+        Tare_Gross,
+        OnlyGross
+    }
     [DataContract]
     public class WeighingMode
     {
         [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        public string Name { get; set; }
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
+        public EWeighingMode Mode{get;set;}
+  
+   }
     [DataContract]
     public class Shipper
     {
@@ -97,7 +100,7 @@ namespace ConsoleApp1
         public string Code { get; set; }
     }
     [DataContract]
-    public class Cars
+    public class Autotruck
     {
         [DataMember]
         public Guid Id { get; set; }
@@ -261,8 +264,8 @@ namespace ConsoleApp1
             List<WeighingMode> car = new List<WeighingMode>();
             //for (int i = 0; i < 10; i++)
             {
-                car.Add(new WeighingMode() {  Id =0, Name ="Брутто_Тара"});
-                car.Add(new WeighingMode() { Id = 0, Name = "Тара_Брутто"});
+                car.Add(new WeighingMode() {  Mode = EWeighingMode.Cross_Tare});
+                car.Add(new WeighingMode() { Mode = EWeighingMode.Tare_Gross });
             }
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(WeighingMode[]), new DataContractJsonSerializerSettings
             {
@@ -564,12 +567,12 @@ namespace ConsoleApp1
             req.Credentials = CredentialCache.DefaultCredentials;
 
             MemoryStream stream1 = new MemoryStream();
-            List<Cars> car = new List<Cars>();
+            List<Autotruck> car = new List<Autotruck>();
             for(int i=0;i<10;i++)
             {
-                car.Add(new Cars() { Carbrand = "Модель" + i.ToString(), CarNumber = "Номер" +i.ToString(), Code = Guid.NewGuid(), Driver = "Водила" + i.ToString(), Id = Guid.NewGuid(), isUsed = true, Shipper = Guid.NewGuid(), TrailerNumber = "tr_num" + i.ToString() });
+                car.Add(new Autotruck() { Carbrand = "Модель" + i.ToString(), CarNumber = "Номер" +i.ToString(), Code = Guid.NewGuid(), Driver = "Водила" + i.ToString(), Id = Guid.NewGuid(), isUsed = true, Shipper = Guid.NewGuid(), TrailerNumber = "tr_num" + i.ToString() });
             }
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Cars[]), new DataContractJsonSerializerSettings
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Autotruck[]), new DataContractJsonSerializerSettings
             {
                 DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
             });

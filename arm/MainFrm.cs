@@ -16,12 +16,12 @@ namespace arm
     public partial class MainFrm : Form
     {
         //int LastNumber;
-        List<RecordWeight> listWeight;
+        List<Weighing> listWeight;
         static public List<Material> listMaterial;
          /// <summary>
             /// Автомобили
             /// </summary>
-        static public List<Cars> listCars;
+        static public List<Autotruck> listCars;
         /// <summary>
         /// Грузоотправитель
         /// </summary>
@@ -38,10 +38,37 @@ namespace arm
         /// Весовщик
         /// </summary>
         static public List<Weighman> listWeighman;
+
+
+
+
+        //--------------------------------------------------
+        static public List<Material> ArhlistMaterial;
+        /// <summary>
+        /// Автомобили
+        /// </summary>
+        static public List<Autotruck> ArhlistCars;
+        /// <summary>
+        /// Грузоотправитель
+        /// </summary>
+        static public List<Shipper> ArhlistShipper;
+        /// <summary>
+        /// Грузполучатель
+        /// </summary>
+        static public List<Consignee> ArhlistConsignee;
+        /// <summary>
+        /// Режим взвешивания
+        /// </summary>
+        static public List<WeighingMode> ArhlistWeighingMode;
+        /// <summary>
+        /// Весовщик
+        /// </summary>
+        static public List<Weighman> ArhlistWeighman;
+        //--------------------------------------------------
         public MainFrm()
         {
             InitializeComponent();
-            listWeight = new List<RecordWeight>();
+            listWeight = new List<Weighing>();
             buttonAll_Click(null, null);
         }
 
@@ -95,7 +122,7 @@ namespace arm
             if (System.IO.File.Exists(fileMaNum))
                 Numbercr = BitConverter.ToInt32(System.IO.File.ReadAllBytes(fileMaNum), 0);
 
-            Form1 frm = new Form1(new RecordWeight(Numbercr++));
+            Form1 frm = new Form1(new Weighing(Numbercr++));
             if (frm.ShowDialog() == DialogResult.OK)
             {
 
@@ -115,7 +142,7 @@ namespace arm
                 }
             }
         }
-        void AddItem(RecordWeight it)
+        void AddItem(Weighing it)
         {
             if (it.DateGross == DateTime.MinValue && it.DateTare == DateTime.MinValue)
                 return;
@@ -138,11 +165,12 @@ namespace arm
         {
             try
             {
-                object tmp = LoadJsonDB(typeof(Cars[]), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
+
+                object tmp = LoadJsonDB(typeof(Autotruck[]), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
                 if (tmp == null)
-                    listCars = new List<Cars>();
+                    listCars = new List<Autotruck>();
                 else
-                    listCars = ((Cars[])tmp).ToList();
+                    listCars = ((Autotruck[])tmp).ToList();
 
                 tmp = LoadJsonDB(typeof(Material[]), Path.Combine(Properties.Settings.Default.PathDB, "listMaterial.txt"));
                 if (tmp == null)
@@ -163,19 +191,73 @@ namespace arm
                 else
                     listConsignee = new List<Consignee>();
 
-                tmp = LoadJsonDB(typeof(WeighingMode[]), Path.Combine(Properties.Settings.Default.PathDB, "listWeighingMode.txt"));
+                /*tmp = LoadJsonDB(typeof(WeighingMode[]), Path.Combine(Properties.Settings.Default.PathDB, "listWeighingMode.txt"));
                 if (tmp != null)
-                    listWeighingMode = ((WeighingMode[])tmp).ToList();
-                else
+                    listWeighingMode = listWeighingMode((WeighingMode[])tmp).ToList();
+                else*/
                     listWeighingMode = new List<WeighingMode>();
-               
+                listWeighingMode.Add(new WeighingMode() { Mode = EWeighingMode.Cross_Tare });
+                listWeighingMode.Add(new WeighingMode() { Mode = EWeighingMode.Tare_Gross });
+
 
                 tmp = LoadJsonDB(typeof(Weighman[]), Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
                 if (tmp != null)
                     listWeighman = ((Weighman[])tmp).ToList();
                 else
-                    listWeighman = new List<Weighman>(); 
+                    listWeighman = new List<Weighman>();
 
+
+                //*******************************************
+                tmp = LoadJsonDB(typeof(Material[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistMaterial.txt"));
+                if (tmp != null)
+                    ArhlistMaterial = ((Material[])tmp).ToList();
+                else
+                    ArhlistMaterial = new List<Material>();
+                /// <summary>
+                /// Автомобили
+                /// </summary>
+                tmp = LoadJsonDB(typeof(Autotruck[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistCars.txt"));
+                if (tmp != null)
+                    ArhlistCars = ((Autotruck[])tmp).ToList();
+                else
+                    ArhlistCars = new List<Autotruck>();
+
+                /// <summary>
+                /// Грузоотправитель
+                /// </summary>
+                tmp = LoadJsonDB(typeof(Shipper[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistShipper.txt"));
+                if (tmp != null)
+                    ArhlistShipper = ((Shipper[])tmp).ToList();
+                else
+                    ArhlistShipper = new List<Shipper>();
+                /// <summary>
+                /// Грузполучатель
+                /// </summary>
+                tmp = LoadJsonDB(typeof(Consignee[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistConsignee.txt"));
+                if (tmp != null)
+                    ArhlistConsignee = ((Consignee[])tmp).ToList();
+                else
+                    ArhlistConsignee = new List<Consignee>();
+
+                /// <summary>
+                /// Режим взвешивания
+                /// </summary>
+                tmp = LoadJsonDB(typeof(WeighingMode[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistWeighingMode.txt"));
+                if (tmp != null)
+                    ArhlistWeighingMode = ((WeighingMode[])tmp).ToList();
+                else
+                    ArhlistWeighingMode = new List<WeighingMode>();
+
+                /// <summary>
+                /// Весовщик
+                /// </summary>
+                tmp = LoadJsonDB(typeof(Weighman[]), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistWeighman.txt"));
+                if (tmp != null)
+                    ArhlistWeighman = ((Weighman[])tmp).ToList();
+                else
+                    ArhlistWeighman = new List<Weighman>();
+
+                //*******************************************
 
 
                 string filename = Path.Combine(Properties.Settings.Default.PathDB, "RecordWeight.txt");
@@ -186,9 +268,9 @@ namespace arm
                     var ser = new NetDataContractSerializer();
                     object tmpobj = ser.ReadObject(reader, true);
                     if (tmpobj != null)
-                        listWeight = (List<RecordWeight>)tmpobj;
+                        listWeight = (List<Weighing>)tmpobj;
                     else
-                        listWeight = new List<RecordWeight>();
+                        listWeight = new List<Weighing>();
                     fs.Close();
 
                     foreach (var tt in listWeight)
@@ -261,7 +343,7 @@ namespace arm
         void WebWeighing(string[] str, System.Net.HttpListenerContext context)
         {
             MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(RecordWeight[]), new DataContractJsonSerializerSettings
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Weighing[]), new DataContractJsonSerializerSettings
             {
                 DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
             });
@@ -281,7 +363,7 @@ namespace arm
             var rdr = new StreamReader(stream1, Encoding.UTF8);
             if (Start > End)
                 return;
-            RecordWeight[] rec;
+            Weighing[] rec;
             lock (listWeight)
             {
                 rec = listWeight.ToArray();
@@ -334,12 +416,16 @@ namespace arm
             lock (listMaterial)
             {
                 listMaterial = ((Material[])obj).ToList();
+                listMaterial.ForEach(x => x.Code = "1C-code" + x.Id.ToString());
                 SaveJsonDB(typeof(Material[]), listMaterial.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listMaterial.txt"));
+                ArhlistMaterial = ArhlistMaterial.Union(listMaterial).ToList();
+                SaveJsonDB(typeof(Material[]), ArhlistMaterial.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistMaterial.txt"));
             }
+
 
             var rs = listMaterial.Select(x =>
             {
-                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+                return new RespCodeToWeb() { Id = x.Id, Code = x.Code };
             }).ToArray();
             ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
@@ -371,7 +457,7 @@ namespace arm
         void WebCars(string[] str, System.Net.HttpListenerRequest request, System.Net.HttpListenerContext context)
         {
             MemoryStream stream1 = new MemoryStream();
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Cars[]), new DataContractJsonSerializerSettings
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Autotruck[]), new DataContractJsonSerializerSettings
             {
                 DateTimeFormat = new DateTimeFormat("yyyy-MM-dd'T'HH:mm:ss")
             });
@@ -388,13 +474,16 @@ namespace arm
      
             lock (listCars)
             {
-                listCars = ((Cars[])obj).ToList();
-                SaveJsonDB(typeof(Cars[]), listCars.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
+                listCars = ((Autotruck[])obj).ToList();
+                listCars.ForEach(x => x.Code = "1C-code" + x.Id.ToString());
+                SaveJsonDB(typeof(Autotruck[]), listCars.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
+                ArhlistCars = ArhlistCars.Union(listCars).ToList();
+                SaveJsonDB(typeof(Autotruck[]), ArhlistCars.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistCars.txt"));
             }
 
             var rs = listCars.Select(x =>
              {
-                 return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+                 return new RespCodeToWeb() { Id = x.Id, Code = x.Code };
              }).ToArray();
             ser= new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
@@ -442,12 +531,15 @@ namespace arm
             lock (listShipper)
             {
                 listShipper = ((Shipper[])obj).ToList();
+                listShipper.ForEach(x => x.Code = "1C-code" + x.Id.ToString());
                 SaveJsonDB(typeof(Shipper[]), listShipper.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listShipper.txt"));
+                ArhlistShipper = ArhlistShipper.Union(listShipper).ToList();
+                SaveJsonDB(typeof(Shipper[]), ArhlistShipper.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistShipper.txt"));
             }
 
             var rs = listShipper.Select(x =>
             {
-                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+                return new RespCodeToWeb() { Id = x.Id, Code =x.Code };
             }).ToArray();
             ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
@@ -495,12 +587,15 @@ namespace arm
             lock (listConsignee)
             {
                 listConsignee = ((Consignee[])obj).ToList();
+                listConsignee.ForEach(x => x.Code = "1C-code" + x.Id.ToString());
                 SaveJsonDB(typeof(Consignee[]), listConsignee.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listConsignee.txt"));
+                ArhlistConsignee=ArhlistConsignee.Union(listConsignee).ToList();
+                SaveJsonDB(typeof(Consignee[]), ArhlistConsignee.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistConsignee.txt"));
             }
 
             var rs = listConsignee.Select(x =>
             {
-                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+                return new RespCodeToWeb() { Id = x.Id, Code = x.Code };
             }).ToArray();
             ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
@@ -548,12 +643,15 @@ namespace arm
             lock (listWeighman)
             {
                 listWeighman = ((Weighman[])obj).ToList();
+                listWeighman.ForEach(x => x.Code = "1C-code" + x.Id.ToString());
                 SaveJsonDB(typeof(Weighman[]), listWeighman.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "listWeighman.txt"));
+                ArhlistWeighman = ArhlistWeighman.Union(listWeighman).ToList();
+                SaveJsonDB(typeof(Weighman[]), ArhlistWeighman.ToArray(), Path.Combine(Properties.Settings.Default.PathDB, "ArhlistWeighman.txt"));
             }
 
             var rs = listWeighman.Select(x =>
             {
-                return new RespCodeToWeb() { Id = x.Id, Code = "1C-code" + x.Id.ToString() };
+                return new RespCodeToWeb() { Id = x.Id, Code = x.Code};
             }).ToArray();
             ser = new DataContractJsonSerializer(typeof(RespCodeToWeb[]), new DataContractJsonSerializerSettings
             {
