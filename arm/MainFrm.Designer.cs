@@ -1,4 +1,17 @@
-﻿namespace arm
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace arm
 {
     partial class MainFrm
     {
@@ -206,6 +219,42 @@
 
         private void ListViewOperation_MouseDoubleClick1(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+
+
+            ////////////////////////
+            /*string Autor = string.Empty;
+            if (it.WeighmanGross != string.Empty)
+            {
+                Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanGross).Name;
+            }
+            if (it.WeighmanGross != string.Empty)
+            {
+                Autor += "/";
+                Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanTare).Name;
+            }
+            string Tovar = "";
+            if (it.MaterialFact != string.Empty)
+                Tovar = ArhlistMaterial.First(x => x.Code == it.MaterialFact).Name;
+            string CarName = string.Empty;
+            string CarNumber = string.Empty;
+            CarName = ArhlistCars.First(x => x.Code == it.Autotruck).Carbrand;
+            CarNumber = ArhlistCars.First(x => x.Code == it.Autotruck).CarNumber;
+
+
+
+            var arrstr = new[] { it.Code.ToString("D9"),
+                                 it.DateGross>it.DateTare? it.DateGross.ToString("dd MM yyyy HH:mm:ss"): it.DateTare.ToString("dd MM yyyy HH:mm:ss"),
+                                 Autor,
+                                 it.WeighingMode== EWeighingMode.Cross_Tare? "Брутто_Тара":"Тара_Брутто",
+                                 Tovar,
+                                 it.WeightGross.ToString(),
+                                 it.NetWeight.ToString(),
+                                 it.WeightTara.ToString(),
+                                  CarName,
+                                 CarNumber,
+                                 it.DateGross!=DateTime.MinValue && it.DateTare!=DateTime.MinValue? "ДА":"НЕТ"};*/
+
+            ////////////////////////////////////////////
             for (int i = 0; i < listViewOperation.Items.Count; i++)
             {
                 var rectangle = listViewOperation.GetItemRect(i);
@@ -224,18 +273,37 @@
                             }
 
                             listViewOperation.Items[i].Tag = frm.rec;
+                            ////////////////////////
+                            string Autor = string.Empty;
+                            if (frm.rec.WeighmanGross != string.Empty)
+                            {
+                                Autor += ArhlistWeighman.First(x => x.Code == frm.rec.WeighmanGross).Name;
+                            }
+                            if (frm.rec.WeighmanGross != string.Empty)
+                            {
+                                Autor += "/";
+                                Autor += ArhlistWeighman.First(x => x.Code == frm.rec.WeighmanTare).Name;
+                            }
+                            string Tovar = "";
+                            if (frm.rec.MaterialFact != string.Empty)
+                                Tovar = ArhlistMaterial.First(x => x.Code == frm.rec.MaterialFact).Name;
+                            string CarName = string.Empty;
+                            string CarNumber = string.Empty;
+                            CarName = ArhlistCars.First(x => x.Code == frm.rec.Autotruck).Carbrand;
+                            CarNumber = ArhlistCars.First(x => x.Code == frm.rec.Autotruck).CarNumber;
+
 
                             listViewOperation.Items[i].SubItems[0].Text = frm.rec.Code.ToString("D9");
                             listViewOperation.Items[i].SubItems[1].Text = frm.rec.DateGross > frm.rec.DateTare ? frm.rec.DateGross.ToString("dd MM yyyy HH:mm:ss") : frm.rec.DateTare.ToString("dd MM yyyy HH:mm:ss");
-                            /*listViewOperation.Items[i].SubItems[2].Text = frm.rec.Autor;
-                            listViewOperation.Items[i].SubItems[3].Text = frm.rec.Regim;
-                            listViewOperation.Items[i].SubItems[4].Text = frm.rec.Tovar;
-                            listViewOperation.Items[i].SubItems[5].Text = frm.rec.WeightBrutto.ToString();
-                            listViewOperation.Items[i].SubItems[6].Text = frm.rec.WeightNetto.ToString();
+                           listViewOperation.Items[i].SubItems[2].Text = Autor;
+                            listViewOperation.Items[i].SubItems[3].Text = frm.rec.WeighingMode== EWeighingMode.Cross_Tare ? "Брутто_Тара" : "Тара_Брутто";
+                            listViewOperation.Items[i].SubItems[4].Text = Tovar;
+                            listViewOperation.Items[i].SubItems[5].Text = frm.rec.WeightGross.ToString();
+                            listViewOperation.Items[i].SubItems[6].Text = frm.rec.NetWeight.ToString();
                             listViewOperation.Items[i].SubItems[7].Text = frm.rec.WeightTara.ToString();
-                            listViewOperation.Items[i].SubItems[8].Text = frm.rec.CarName;
-                            listViewOperation.Items[i].SubItems[9].Text = frm.rec.CarNumber;
-                            listViewOperation.Items[i].SubItems[10].Text = frm.rec.DateGross != System.DateTime.MinValue && frm.rec.DateTare != System.DateTime.MinValue ? "ДА" : "НЕТ";*/
+                            listViewOperation.Items[i].SubItems[8].Text = CarName;
+                            listViewOperation.Items[i].SubItems[9].Text = CarNumber;
+                            listViewOperation.Items[i].SubItems[10].Text = frm.rec.DateGross != System.DateTime.MinValue && frm.rec.DateTare != System.DateTime.MinValue ? "ДА" : "НЕТ";
 
                             if (buttonAll.FlatStyle != System.Windows.Forms.FlatStyle.Popup)
                             {

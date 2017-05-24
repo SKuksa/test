@@ -151,7 +151,7 @@ namespace arm
             {
                 Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanGross).Name;
             }
-            if (it.WeighmanGross != string.Empty)
+            if (it.WeighmanTare != string.Empty)
             {
                 Autor += "/";
                 Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanTare).Name;
