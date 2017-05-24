@@ -146,17 +146,37 @@ namespace arm
         {
             if (it.DateGross == DateTime.MinValue && it.DateTare == DateTime.MinValue)
                 return;
+            string Autor = string.Empty;
+            if (it.WeighmanGross != string.Empty)
+            {
+                Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanGross).Name;
+            }
+            if (it.WeighmanGross != string.Empty)
+            {
+                Autor += "/";
+                Autor += ArhlistWeighman.First(x => x.Code == it.WeighmanTare).Name;
+            }
+            string Tovar = "";
+            if(it.MaterialFact!=string.Empty)
+                Tovar = ArhlistMaterial.First(x=>x.Code==it.MaterialFact).Name;
+            string CarName = string.Empty;
+            string CarNumber = string.Empty;
+            CarName = ArhlistCars.First(x => x.Code == it.Autotruck).Carbrand;
+            CarNumber = ArhlistCars.First(x => x.Code == it.Autotruck).CarNumber;
+
+
+
             var arrstr = new[] { it.Code.ToString("D9"),
                                  it.DateGross>it.DateTare? it.DateGross.ToString("dd MM yyyy HH:mm:ss"): it.DateTare.ToString("dd MM yyyy HH:mm:ss"),
-                                 /*it.Autor,
-                                 it.Regim,
-                                 it.Tovar,
-                                 it.WeightBrutto.ToString(),
-                                 it.WeightNetto.ToString(),
+                                 Autor,
+                                 it.WeighingMode== EWeighingMode.Cross_Tare? "Брутто_Тара":"Тара_Брутто",
+                                 Tovar,
+                                 it.WeightGross.ToString(),
+                                 it.NetWeight.ToString(),
                                  it.WeightTara.ToString(),
-                                 it.CarName,
-                                 it.CarNumber,
-                                 it.dataBrutto!=DateTime.MinValue && it.dataTara!=DateTime.MinValue? "ДА":"НЕТ" */};
+                                  CarName,
+                                 CarNumber,
+                                 it.DateGross!=DateTime.MinValue && it.DateTare!=DateTime.MinValue? "ДА":"НЕТ"};
             ListViewItem item = new ListViewItem(arrstr);
             item.Tag = it;
             listViewOperation.Items.Add(item);

@@ -125,7 +125,7 @@
             this.listViewOperation.TabIndex = 4;
             this.listViewOperation.UseCompatibleStateImageBehavior = false;
             this.listViewOperation.View = System.Windows.Forms.View.Details;
-            this.listViewOperation.MouseDoubleClick += ListViewOperation_MouseDoubleClick1;
+            this.listViewOperation.MouseDoubleClick += this.ListViewOperation_MouseDoubleClick1;
             // 
             // columnNumber
             // 
@@ -164,7 +164,7 @@
             // 
             // columnVesConteiner
             // 
-            this.columnVesConteiner.Text = "Вес контейнера";
+            this.columnVesConteiner.Text = "Тара";
             this.columnVesConteiner.Width = 134;
             // 
             // columnCar
