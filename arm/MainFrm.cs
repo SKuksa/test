@@ -185,6 +185,9 @@ namespace arm
         {
             try
             {
+                if (!Directory.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images")))
+                    Directory.CreateDirectory(Path.Combine(Properties.Settings.Default.PathDB, "images"));
+
 
                 object tmp = LoadJsonDB(typeof(Autotruck[]), Path.Combine(Properties.Settings.Default.PathDB, "listCars.txt"));
                 if (tmp == null)
@@ -393,6 +396,62 @@ namespace arm
                 var date = x.DateGross > x.DateTare ? x.DateGross : x.DateTare;
                 return date >= Start && date <= End;
             }).ToArray();
+            for (int i = 0; i < rec.Length; i++)
+            {
+                if( System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t2.jpg"))||
+                    System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t1.jpg"))||
+                    System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b2.jpg"))||
+                    System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b2.jpg")))
+                    {
+                        List<File> ls = new List<File>();
+                    if (rec[i].DateTare != DateTime.MinValue)
+                    {
+                        var vr = new File()
+                        {
+                            BlobFilePath = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t2.jpg"),
+                            Byte = System.IO.File.ReadAllBytes(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t2.jpg")),
+                            Code = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t2.jpg"),
+                            Name = rec[i].Code.ToString("D9") + "t2.jpg"
+                        };
+                        ls.Add(vr);
+                        vr = new File()
+                        {
+                            BlobFilePath = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t1.jpg"),
+                            Byte = System.IO.File.ReadAllBytes(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t1.jpg")),
+                            Code = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "t1.jpg"),
+                            Name = rec[i].Code.ToString("D9") + "t1.jpg"
+                        };
+                        ls.Add(vr);
+                    }
+                    if (rec[i].DateGross != DateTime.MinValue)
+                    {
+                        var vr = new File()
+                        {
+                            BlobFilePath = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b2.jpg"),
+                            Byte = System.IO.File.ReadAllBytes(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b2.jpg")),
+                            Code = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b2.jpg"),
+                            Name = rec[i].Code.ToString("D9") + "b2.jpg"
+                        };
+                        ls.Add(vr);
+                    vr = new File()
+                    {
+                        BlobFilePath = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b1.jpg"),
+                        Byte = System.IO.File.ReadAllBytes(Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b1.jpg")),
+                        Code = Path.Combine(Properties.Settings.Default.PathDB, "images", rec[i].Code.ToString("D9") + "b1.jpg"),
+                        Name = rec[i].Code.ToString("D9") + "b1.jpg"
+                        };
+                        ls.Add(vr);
+                    }
+                    if (ls.Count != 0)
+                        rec[i].Files = ls.ToArray();
+                }
+
+
+
+
+
+
+            }
             ser.WriteObject(stream1, rec);
             stream1.Position = 0;
             var ret = rdr.ReadToEnd();

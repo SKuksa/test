@@ -8,5 +8,23 @@
     <Setting Name="PathDB" Type="System.String" Scope="Application">
       <Value Profile="(Default)">c:\cards\</Value>
     </Setting>
+    <Setting Name="Camera1Login" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Camera1Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Camera2Login" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Camera2Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Camera1Url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://10.174.18.127:80/Streaming/channels/1/picture?snapShotImageType=JPEG</Value>
+    </Setting>
+    <Setting Name="Camera2Url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://10.174.18.127:80/Streaming/channels/1/picture?snapShotImageType=JPEG</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

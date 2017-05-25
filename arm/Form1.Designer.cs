@@ -87,13 +87,25 @@
             this.справкаToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
+            this.pictureBoxTara1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTara2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBrutto1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBruuto2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTara1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTara2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrutto1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBruuto2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -349,7 +361,7 @@
             this.buttonBrutto.Text = "Взвесить";
             this.buttonBrutto.UseVisualStyleBackColor = false;
             this.buttonBrutto.Click += this.buttonBrutto_Click;
-
+            // 
             // textWeight
             // 
             this.textWeight.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
@@ -611,6 +623,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel6.Controls.Add(this.pictureBoxBruuto2);
             this.panel6.Location = new System.Drawing.Point(1224, 302);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(320, 240);
@@ -619,6 +632,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel5.Controls.Add(this.pictureBoxTara1);
             this.panel5.Location = new System.Drawing.Point(898, 56);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(320, 240);
@@ -627,6 +641,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel4.Controls.Add(this.pictureBoxTara2);
             this.panel4.Location = new System.Drawing.Point(1224, 56);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(320, 240);
@@ -635,6 +650,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel3.Controls.Add(this.pictureBoxBrutto1);
             this.panel3.Location = new System.Drawing.Point(898, 302);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(320, 240);
@@ -761,6 +777,46 @@
             this.toolStripButtonSave.Text = "Записать и закрыть";
             this.toolStripButtonSave.Click += this.buttonSave_Click;
             // 
+            // pictureBoxTara1
+            // 
+            this.pictureBoxTara1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTara1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTara1.Name = "pictureBoxTara1";
+            this.pictureBoxTara1.Size = new System.Drawing.Size(320, 240);
+            this.pictureBoxTara1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTara1.TabIndex = 0;
+            this.pictureBoxTara1.TabStop = false;
+            // 
+            // pictureBoxTara2
+            // 
+            this.pictureBoxTara2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTara2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxTara2.Name = "pictureBoxTara2";
+            this.pictureBoxTara2.Size = new System.Drawing.Size(320, 240);
+            this.pictureBoxTara2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTara2.TabIndex = 0;
+            this.pictureBoxTara2.TabStop = false;
+            // 
+            // pictureBoxBrutto1
+            // 
+            this.pictureBoxBrutto1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxBrutto1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBrutto1.Name = "pictureBoxBrutto1";
+            this.pictureBoxBrutto1.Size = new System.Drawing.Size(320, 240);
+            this.pictureBoxBrutto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBrutto1.TabIndex = 0;
+            this.pictureBoxBrutto1.TabStop = false;
+            // 
+            // pictureBoxBruuto2
+            // 
+            this.pictureBoxBruuto2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxBruuto2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBruuto2.Name = "pictureBoxBruuto2";
+            this.pictureBoxBruuto2.Size = new System.Drawing.Size(320, 240);
+            this.pictureBoxBruuto2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBruuto2.TabIndex = 0;
+            this.pictureBoxBruuto2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -783,8 +839,16 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTara1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTara2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrutto1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBruuto2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -855,6 +919,10 @@
         private System.Windows.Forms.ComboBox comboBoxGrusoOtpr;
         private System.Windows.Forms.ComboBox comboBoxAutor;
         private System.Windows.Forms.ComboBox comboBoxAutoNumber;
+        private System.Windows.Forms.PictureBox pictureBoxBruuto2;
+        private System.Windows.Forms.PictureBox pictureBoxTara1;
+        private System.Windows.Forms.PictureBox pictureBoxTara2;
+        private System.Windows.Forms.PictureBox pictureBoxBrutto1;
     }
 }
 

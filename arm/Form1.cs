@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace arm
 {
+    enum variantLoadImage
+    {
+        LoadBruttoAndTaraFromCamera,
+        LoadOnlyBruttoFromCamera,
+        LoadOnlyTaraFromCamera,
+        LoadAllFromFiles
+    };
     public partial class Form1 : Form
     {
         public Form1()
@@ -261,6 +269,148 @@ namespace arm
            rec.Regim = (string)comboBox1.SelectedItem;*/
             Close();
         }
+        void LoadImageFromCameraOrFile(variantLoadImage TypeLoad)
+        {
+            if (TypeLoad == variantLoadImage.LoadBruttoAndTaraFromCamera || TypeLoad == variantLoadImage.LoadOnlyTaraFromCamera)
+            {
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"));
+
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"));
+            }
+
+            if (TypeLoad == variantLoadImage.LoadBruttoAndTaraFromCamera || TypeLoad == variantLoadImage.LoadOnlyBruttoFromCamera)
+            {
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg"));
+
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg"));
+            }
+            if (TypeLoad == variantLoadImage.LoadBruttoAndTaraFromCamera)
+            {
+                try
+                {
+                    var cm1 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera1Login,
+                                            Properties.Settings.Default.Camera1Password,
+                                            Properties.Settings.Default.Camera1Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"),
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры1");
+                }
+                try
+                {
+                    var cm2 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera2Login,
+                                            Properties.Settings.Default.Camera2Password,
+                                            Properties.Settings.Default.Camera2Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"),
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")
+
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры2");
+                }
+
+            }
+            if (TypeLoad == variantLoadImage.LoadOnlyBruttoFromCamera)
+            {
+                try
+                {
+                    var cm1 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera1Login,
+                                            Properties.Settings.Default.Camera1Password,
+                                            Properties.Settings.Default.Camera1Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")
+                    );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры2");
+                }
+                try
+                {
+                    var cm2 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera2Login,
+                                            Properties.Settings.Default.Camera2Password,
+                                            Properties.Settings.Default.Camera2Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")
+
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры2");
+                }
+            }
+            if (TypeLoad == variantLoadImage.LoadOnlyTaraFromCamera)
+            {
+                try
+                {
+                    var cm1 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera1Login,
+                                            Properties.Settings.Default.Camera1Password,
+                                            Properties.Settings.Default.Camera1Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg")
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры1");
+                }
+                try
+                {
+                    var cm2 = new
+                        LoadImageFromCamera(Properties.Settings.Default.Camera2Login,
+                                            Properties.Settings.Default.Camera2Password,
+                                            Properties.Settings.Default.Camera2Url,
+                                            Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg")
+
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось получить изображение с камеры2");
+                }
+            }
+
+            if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")))
+            {
+                using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg"), FileMode.Open))
+                {
+                    pictureBoxBrutto1.Image = Image.FromStream(str);
+                }
+            }
+            if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")))
+            {
+                using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg"), FileMode.Open))
+                {
+                    pictureBoxBruuto2.Image = Image.FromStream(str);
+                }
+            }
+            if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg")))
+            {
+                using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"), FileMode.Open))
+                {
+                    pictureBoxTara1.Image = Image.FromStream(str);
+                }
+            }
+            if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg")))
+            {
+                using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"), FileMode.Open))
+                {
+                    pictureBoxTara2.Image = Image.FromStream(str);
+                }
+            }
+        }
         void Init()
         {
             if (MainFrm.listWeighman != null)
@@ -298,12 +448,67 @@ namespace arm
                     comboBoxTovar.Items.AddRange(MainFrm.listMaterial.OrderBy(x=>x.Name).ToArray());
                 }
             }
-            
+
             if (rec.DateTare == DateTime.MinValue && rec.DateGross == DateTime.MinValue)//Инициализация новой карточки
             {
+                LoadImageFromCameraOrFile(variantLoadImage.LoadBruttoAndTaraFromCamera);
+               /* if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"));
 
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"));
+
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg"));
+
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")))
+                    System.IO.File.Delete(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg"));
+
+
+                var cm1 = new
+                    LoadImageFromCamera(Properties.Settings.Default.Camera1Login,
+                                        Properties.Settings.Default.Camera1Password,
+                                        Properties.Settings.Default.Camera1Url,
+                                        Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"),
+                                        Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")
+                    );
+                var cm2 = new
+                    LoadImageFromCamera(Properties.Settings.Default.Camera2Login,
+                                        Properties.Settings.Default.Camera2Password,
+                                        Properties.Settings.Default.Camera2Url,
+                                        Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"),
+                                        Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")
+                    );
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg")))
+                {
+                    using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b1.jpg"), FileMode.Open))
+                    {
+                        pictureBoxBrutto1.Image = Image.FromStream(str);
+                    }
+                }
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg")))
+                {
+                    using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "b2.jpg"), FileMode.Open))
+                    {
+                        pictureBoxBruuto2.Image = Image.FromStream(str);
+                    }
+                }
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg")))
+                { 
+                    using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t1.jpg"), FileMode.Open))
+                    {
+                        pictureBoxTara1.Image = Image.FromStream(str);
+                    }
+                }
+                if (System.IO.File.Exists(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg")))
+                {
+                    using (var str = System.IO.File.Open(Path.Combine(Properties.Settings.Default.PathDB, "images", rec.Code.ToString("D9") + "t2.jpg"), FileMode.Open))
+                    {
+                        pictureBoxTara2.Image = Image.FromStream(str);
+                    }
+                }*/
             }
-
+            
             if (rec.DateTare == DateTime.MinValue && rec.DateGross != DateTime.MinValue)//Взвесили брутто не взвесили нетто
             {
                 maskedTextBoxDataBrutto.Text = rec.DateGross.ToString("dd/MM/yyyy hh:mm:ss");
@@ -311,9 +516,8 @@ namespace arm
                 comboBox1.SelectedIndex = 1;
                 buttonBrutto.Enabled = false;
                 buttonBrutto.Visible = false;
-
-
-            }
+                LoadImageFromCameraOrFile(variantLoadImage.LoadOnlyTaraFromCamera);
+             }
             if (rec.DateTare != DateTime.MinValue && rec.DateGross == DateTime.MinValue)//Взвесили нетто не взвесили брутто
             {
                 maskedTextBoxDataTara.Text = rec.DateTare.ToString("dd/MM/yyyy hh:mm:ss");
@@ -321,12 +525,14 @@ namespace arm
                 comboBox1.SelectedIndex = 0;
                 buttonTara.Enabled = false;
                 buttonTara.Visible = false;
-            }
+                LoadImageFromCameraOrFile(variantLoadImage.LoadOnlyBruttoFromCamera);
+             }
 
             if (rec.DateTare != DateTime.MinValue && rec.DateGross != DateTime.MinValue)//Все взвесили просмотр
             {
-                //buttonSave.Text = "Закрыть";
-                toolStripButtonSave.Text = "Закрыть";
+                 LoadImageFromCameraOrFile(variantLoadImage.LoadAllFromFiles);
+                    //buttonSave.Text = "Закрыть";
+                    toolStripButtonSave.Text = "Закрыть";
                 buttonTara.Enabled = false;
                 buttonTara.Visible = false;
                 buttonBrutto.Enabled = false;

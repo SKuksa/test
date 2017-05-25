@@ -40,5 +40,59 @@ namespace arm.Properties {
                 return ((string)(this["PathDB"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string Camera1Login {
+            get {
+                return ((string)(this["Camera1Login"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string Camera1Password {
+            get {
+                return ((string)(this["Camera1Password"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string Camera2Login {
+            get {
+                return ((string)(this["Camera2Login"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
+        public string Camera2Password {
+            get {
+                return ((string)(this["Camera2Password"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.174.18.127:80/Streaming/channels/1/picture?snapShotImageType=JPEG")]
+        public string Camera1Url {
+            get {
+                return ((string)(this["Camera1Url"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://10.174.18.127:80/Streaming/channels/1/picture?snapShotImageType=JPEG")]
+        public string Camera2Url {
+            get {
+                return ((string)(this["Camera2Url"]));
+            }
+        }
     }
 }
